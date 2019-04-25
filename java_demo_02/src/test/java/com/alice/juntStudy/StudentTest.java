@@ -16,6 +16,7 @@ public class StudentTest {
         assertEquals("alice",student.getName());
         System.out.println(student.isHappy());
         assertFalse(student.isHappy());
+//        assertTrue(student.isHappy());
     }
 
     @Before
