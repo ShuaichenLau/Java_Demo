@@ -14,12 +14,15 @@ public class StudentTest {
     @Test
     public void getName() {
         assertEquals("alice",student.getName());
+        System.out.println(student.isHappy());
+        assertFalse(student.isHappy());
     }
 
     @Before
     public void setUp() throws Exception {
         student = new Student();
         student.setName("alice");
+        student.setHappy(false);
     }
 
     @After

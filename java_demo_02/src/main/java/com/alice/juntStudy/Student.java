@@ -1,21 +1,14 @@
 package com.alice.juntStudy;
 
+import lombok.Data;
+
+@Data
 public class Student {
 
     private String name;
 
-    public String getName() {
-        return name;
-    }
+    private boolean isHappy;
 
-    public void setName(String name) {
-        this.name = name;
-    }
 
-    public Student() {
-    }
 
-    public Student(String name) {
-        this.name = name;
-    }
 }
