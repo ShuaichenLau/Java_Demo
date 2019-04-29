@@ -10,8 +10,8 @@ public class DateUtils {
         SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         Calendar canlandar = Calendar.getInstance();
         canlandar.setTime(date);
-        canlandar.add(canlandar.YEAR,50 );
-        String syncTime=df.format(canlandar.getTime()).toString();
+        canlandar.add(canlandar.YEAR, 50);
+        String syncTime = df.format(canlandar.getTime()).toString();
         System.out.println(syncTime);
 
 
@@ -23,6 +23,9 @@ public class DateUtils {
         System.out.println("时:" + cal.get(Calendar.HOUR_OF_DAY));
         System.out.println("分:" + cal.get(Calendar.MINUTE));
         System.out.println("秒:" + cal.get(Calendar.SECOND));
+
+        System.out.println(cal.get(Calendar.YEAR) + "年" + (cal.get(Calendar.MONTH) + 1) + "月" + cal.get(Calendar.DAY_OF_MONTH) + "日");
+        System.out.println(cal.get(Calendar.HOUR_OF_DAY) + "时" + cal.get(Calendar.MINUTE) + "分" + cal.get(Calendar.SECOND) + "秒");
 
     }
 }
