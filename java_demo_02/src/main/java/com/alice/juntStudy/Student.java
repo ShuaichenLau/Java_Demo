@@ -1,6 +1,7 @@
 package com.alice.juntStudy;
 
 import lombok.Data;
+import org.hibernate.validator.constraints.Email;
 
 @Data
 public class Student {
@@ -9,7 +10,8 @@ public class Student {
 
     private boolean isHappy;
 
-
+    @Email
+    private String email;
 
 
 }
