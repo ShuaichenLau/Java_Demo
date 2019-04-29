@@ -6,9 +6,6 @@ import com.baomidou.mybatisplus.annotations.TableName;
 import com.baomidou.mybatisplus.enums.IdType;
 import lombok.Data;
 
-import javax.persistence.Table;
-import java.time.temporal.ValueRange;
-
 /**
  * @author liusc
  * @date 2019-4-29 16:18:29
