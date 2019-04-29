@@ -49,6 +49,7 @@ public class BubbleSortDemo {
         for (int i : arr) {
             System.out.print(i + ",");
         }
+        System.out.println();
 
     }
 }
