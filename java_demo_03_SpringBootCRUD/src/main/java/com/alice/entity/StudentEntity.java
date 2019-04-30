@@ -5,9 +5,9 @@ import com.baomidou.mybatisplus.annotations.TableId;
 import com.baomidou.mybatisplus.annotations.TableName;
 import com.baomidou.mybatisplus.enums.IdType;
 import lombok.Data;
+import org.springframework.stereotype.Component;
 
-import javax.persistence.Table;
-import java.time.temporal.ValueRange;
+import java.io.Serializable;
 
 /**
  * @author liusc
@@ -15,8 +15,9 @@ import java.time.temporal.ValueRange;
  */
 @Data
 @TableName(value = "student")
-public class StudentEntity {
+public class StudentEntity implements Serializable {
 
+    private static final long serialVersionUID = 24652264586530520L;
     @TableId(type = IdType.AUTO)
     private Integer id;
 
