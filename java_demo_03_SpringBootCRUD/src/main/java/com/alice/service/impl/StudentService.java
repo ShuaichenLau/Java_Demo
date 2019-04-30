@@ -8,6 +8,6 @@ import java.util.List;
 
 public interface StudentService extends IService<StudentEntity> {
 
-
     List<StudentEntity> findByAll();
+
 }
