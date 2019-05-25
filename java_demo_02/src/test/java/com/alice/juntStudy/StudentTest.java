@@ -1,5 +1,7 @@
 package com.alice.juntStudy;
 
+
+import com.alice.entity.StudentEntity;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -8,7 +10,7 @@ import static org.junit.Assert.*;
 
 public class StudentTest {
 
-    private Student student = null;
+    private StudentEntity student = null;
 
 
     @Test
@@ -21,7 +23,7 @@ public class StudentTest {
 
     @Before
     public void setUp() throws Exception {
-        student = new Student();
+        student = new StudentEntity();
         student.setName("alice");
         student.setHappy(false);
     }

@@ -1,10 +1,10 @@
-package com.alice.juntStudy;
+package com.alice.entity;
 
 import lombok.Data;
 import org.hibernate.validator.constraints.Email;
 
 @Data
-public class Student {
+public class StudentEntity {
 
     private String name;
 
