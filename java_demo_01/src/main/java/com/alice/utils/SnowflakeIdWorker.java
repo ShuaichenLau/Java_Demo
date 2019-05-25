@@ -1,4 +1,4 @@
-package com.alice;
+package com.alice.utils;
 
 /**
  * Twitter_Snowflake<br>

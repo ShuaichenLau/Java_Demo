@@ -1,4 +1,4 @@
-package com.alice;
+package com.alice.main;
 
 import com.alice.entity.User;
 import com.alice.service.Uservice;
@@ -74,7 +74,6 @@ public class Hello001 {
             getNodes(next);
         }
     }
-
 
     public InputStream getResourceAsStream(String xml){
         InputStream resourceAsStream = this.getClass().getClassLoader().getResourceAsStream(xml);

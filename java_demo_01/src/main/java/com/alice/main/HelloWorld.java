@@ -1,4 +1,4 @@
-package com.alice;
+package com.alice.main;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
