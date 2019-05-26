@@ -77,7 +77,7 @@ public class ExtClassPathXmlApplicationContextAttriAssign {
         List<Class> exisClassByPackageName = Lists.newArrayList();
 
         for (Class<?> aClass : classes) {
-            ExtService declaredAnnotation = aClass.getDeclaredAnnotation(ExtService.class);
+            ExtService declaredAnnotation = (ExtService)aClass.getDeclaredAnnotation(ExtService.class);
             if (declaredAnnotation != null){
                 exisClassByPackageName.add(aClass);
                 continue;

@@ -17,18 +17,9 @@ public class TestMain {
         // 2.使用Java的反射机制扫包,获取当前包下所有的类
         // 3.使用Java的反射机制进行初始化
 
-        ExtClassPathXmlApplicationContextAttriAssign extClassPathXmlApplicationContext = new ExtClassPathXmlApplicationContextAttriAssign("com.alice");
+        ExtClassPathXmlApplicationContextAttriAssign extClassPathXmlApplicationContext = new ExtClassPathXmlApplicationContextAttriAssign("com.alice.service.impl");
         UserServiceImpl userService = (UserServiceImpl) extClassPathXmlApplicationContext.getBean("userServiceImpl");
-
-
-        User user = new User();
-
-        user.setName("68754807@qq.com");
-        user.setName("alice");
-        user.setHappy(true);
-        userService.insert(user);
-
-        userService.insert(user);
+        userService.addOrder();
         System.out.println(userService.toString());
 
     }

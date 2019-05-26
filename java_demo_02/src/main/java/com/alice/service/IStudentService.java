@@ -7,5 +7,5 @@ public interface IStudentService {
 
     boolean insert(Student student);
 
-    void add(User user);
+    void reStr();
 }

@@ -29,16 +29,14 @@ public class StudentServiceImpl implements IStudentService {
     @ExtResource
     private IUserservice userservice;
 
-
-
     @Override
     public boolean insert(Student student) {
         return false;
     }
 
     @Override
-    public void add(User user) {
-        userservice.insert(user);
+    public void reStr() {
+        userservice.addOrder();
     }
 }
 
