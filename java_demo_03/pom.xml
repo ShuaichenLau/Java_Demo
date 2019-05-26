@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.alice</groupId>
-    <artifactId>java_demo_03_SpringBootCRUD</artifactId>
+    <artifactId>java_demo_03</artifactId>
     <version>1.0-SNAPSHOT</version>
 
 
