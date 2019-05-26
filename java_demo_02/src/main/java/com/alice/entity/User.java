@@ -2,10 +2,9 @@ package com.alice.entity;
 
 import lombok.Data;
 import org.hibernate.validator.constraints.Email;
-
+@Data
 public class User {
-    @Data
-    public static class StudentEntity {
+
 
         private String name;
 
@@ -15,5 +14,5 @@ public class User {
         private String email;
 
 
-    }
+
 }
