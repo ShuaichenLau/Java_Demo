@@ -1,13 +1,9 @@
 package com.alice.spring.ext;
 
-import com.alice.spring.extannotation.ExtResource;
 import com.alice.spring.extannotation.ExtService;
 import com.alice.utils.ClassUtil;
-import com.alice.utils.ExtStringUtils;
 import org.springframework.util.StringUtils;
 
-import java.lang.annotation.Annotation;
-import java.lang.reflect.Field;
 import java.util.List;
 import java.util.concurrent.ConcurrentHashMap;
 
@@ -57,7 +53,7 @@ public class ExtClassPathXmlApplicationContext {
             if (annotation != null) {
                 // beanId 类名小写
                 String className = classInfo.getSimpleName();
-                beans.put(ExtStringUtils.toLowerCaseFirstOne(className),classInfo);
+                beans.put(ClassUtil.toLowerCaseFirstOne(className),classInfo);
                 continue;
             }
 

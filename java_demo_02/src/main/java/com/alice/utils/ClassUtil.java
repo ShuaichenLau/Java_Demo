@@ -14,6 +14,16 @@ import java.util.jar.JarFile;
 
 public class ClassUtil {
 
+	//首字母小写
+	public static String toLowerCaseFirstOne(String str){
+		if(Character.isLowerCase(str.charAt(0))){
+			return str;
+		}else {
+			return (new StringBuilder()).append(Character.toLowerCase(str.charAt(0))).append(str.substring(1)).toString();
+		}
+	}
+
+
 	/**
 	 * 取得某个接口下所有实现这个接口的类
 	 */

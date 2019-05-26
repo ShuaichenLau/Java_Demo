@@ -3,7 +3,6 @@ package com.alice.spring.ext;
 import com.alice.spring.extannotation.ExtResource;
 import com.alice.spring.extannotation.ExtService;
 import com.alice.utils.ClassUtil;
-import com.alice.utils.ExtStringUtils;
 import com.google.common.collect.Lists;
 import org.springframework.util.StringUtils;
 
@@ -61,7 +60,7 @@ public class ExtClassPathXmlApplicationContextAttriAssign {
         ConcurrentHashMap<String, Object> stringObjectConcurrentHashMap = new ConcurrentHashMap<String, Object>();
         for (Class aClass : listClassesAnnotation) {
             Object newInstance = aClass.newInstance();
-            String beanId = ExtStringUtils.toLowerCaseFirstOne(aClass.getSimpleName());
+            String beanId = ClassUtil.toLowerCaseFirstOne(aClass.getSimpleName());
             stringObjectConcurrentHashMap.put(beanId,newInstance);
         }
 
