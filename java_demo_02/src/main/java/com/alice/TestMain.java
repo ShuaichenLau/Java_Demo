@@ -1,4 +1,4 @@
-package com.alice.main;
+package com.alice;
 
 import com.alice.entity.Student;
 import com.alice.entity.User;
