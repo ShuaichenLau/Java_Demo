@@ -8,27 +8,14 @@
     <artifactId>java_demo_03</artifactId>
     <version>1.0-SNAPSHOT</version>
 
-
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <java-version>1.8</java-version>
         <mybatis-spring-boot>1.2.0</mybatis-spring-boot>
         <mysql-connector>5.1.39</mysql-connector>
-        <druid.spring.version>1.1.10</druid.spring.version>
-        <druid.version>1.1.10</druid.version>
-        <mybatisplus.spring.boot.version>1.0.5</mybatisplus.spring.boot.version>
-        <mybatisplus.version>2.2.0</mybatisplus.version>
-        <commons.lang.version>2.6</commons.lang.version>
-        <commons.configuration.version>1.10</commons.configuration.version>
     </properties>
 
     <dependencies>
-
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter</artifactId>
-        </dependency>
-
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
@@ -44,6 +31,7 @@
             <artifactId>spring-boot-starter-data-jpa</artifactId>
             <version>1.5.9.RELEASE</version>
         </dependency>
+
 
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -65,54 +53,6 @@
             <scope>test</scope>
         </dependency>
 
-        <!--Druid Spring Boot Starter 用于帮助你在Spring Boot项目中轻松集成Druid数据库连接池和监控-->
-        <dependency>
-            <groupId>com.alibaba</groupId>
-            <artifactId>druid-spring-boot-starter</artifactId>
-            <version>${druid.version}</version>
-        </dependency>
-
-        <!--Druid组件 DRUID是阿里巴巴开源平台上一个数据库连接池实现,-->
-        <dependency>
-            <groupId>com.alibaba</groupId>
-            <artifactId>druid</artifactId>
-            <version>${druid.spring.version}</version>
-        </dependency>
-
-        <!-- Mybatis-Plus快速集成 spring-boot简化配置而生-->
-        <dependency>
-            <groupId>com.baomidou</groupId>
-            <artifactId>mybatisplus-spring-boot-starter</artifactId>
-            <version>${mybatisplus.spring.boot.version}</version>
-        </dependency>
-
-        <!--Mybatis-Plus(简称MP)是一个 Mybatis的增强工具,在 Mybatis的基础上只做增强不做改变,为简化开发、提高效率而生-->
-        <dependency>
-            <groupId>com.baomidou</groupId>
-            <artifactId>mybatis-plus</artifactId>
-            <version>${mybatisplus.version}</version>
-        </dependency>
-
-        <!--lang下有很多Utils类，提供了若干static方法供调用，涵盖了字符串操作、字符操作、JVM交互操作、归类、异常和位域校验等等-->
-        <dependency>
-            <groupId>commons-lang</groupId>
-            <artifactId>commons-lang</artifactId>
-            <version>${commons.lang.version}</version>
-        </dependency>
-
-        <!--是一个java应用程序的配置管理类库。可以从properties或者xml文件中加载软件的配置信息，用来构建支撑软件运行的基础环境-->
-        <dependency>
-            <groupId>commons-configuration</groupId>
-            <artifactId>commons-configuration</artifactId>
-            <version>${commons.configuration.version}</version>
-        </dependency>
-
-        <!-- 通用Mapper -->
-        <dependency>
-            <groupId>tk.mybatis</groupId>
-            <artifactId>mapper-spring-boot-starter</artifactId>
-            <version>2.0.4</version>
-        </dependency>
 
         <!-- Spring Boot Mybatis 依赖 -->
         <dependency>
@@ -155,13 +95,6 @@
             <scope>provided</scope>
         </dependency>
 
-        <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-            <version>4.12</version>
-            <scope>test</scope>
-        </dependency>
-
         <!-- https://mvnrepository.com/artifact/com.google.guava/guava-collections -->
         <dependency>
             <groupId>com.google.guava</groupId>
@@ -186,10 +119,16 @@
             <version>2.1.4.RELEASE</version>
             <scope>compile</scope>
         </dependency>
+
         <dependency>
-            <groupId>org.activiti</groupId>
-            <artifactId>activiti-spring-boot-starter-basic</artifactId>
-            <version>6.0.0</version>
+            <groupId>com.baomidou</groupId>
+            <artifactId>mybatis-plus-core</artifactId>
+            <version>3.1.0</version>
+        </dependency>
+        <dependency>
+            <groupId>com.baomidou</groupId>
+            <artifactId>mybatis-plus-support</artifactId>
+            <version>2.3</version>
         </dependency>
 
     </dependencies>

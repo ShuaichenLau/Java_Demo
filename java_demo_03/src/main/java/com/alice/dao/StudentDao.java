@@ -1,7 +1,7 @@
 package com.alice.dao;
 
 import com.alice.entity.StudentEntity;
-import com.baomidou.mybatisplus.mapper.BaseMapper;
+import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import groovy.util.logging.Commons;
 import org.apache.ibatis.annotations.Mapper;
 import org.slf4j.Logger;
