@@ -14,6 +14,11 @@ import java.util.jar.JarFile;
 
 public class ClassUtil {
 
+	public static Object newInstance(Class<?> classInfo) throws IllegalAccessException, InstantiationException {
+		return classInfo.newInstance();
+	}
+
+
 	//首字母小写
 	public static String toLowerCaseFirstOne(String str){
 		if(Character.isLowerCase(str.charAt(0))){

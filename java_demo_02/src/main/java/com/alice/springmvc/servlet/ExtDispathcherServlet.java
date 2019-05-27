@@ -1,12 +1,15 @@
 package com.alice.springmvc.servlet;
 
 import com.alice.spring.extannotation.ExtController;
+import com.alice.spring.extannotation.ExtRequestMapping;
 import com.alice.utils.ClassUtil;
 
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
+import java.lang.reflect.Method;
 import java.util.List;
+import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
 
@@ -71,8 +74,6 @@ import java.util.concurrent.ConcurrentHashMap;
  */
 public class ExtDispathcherServlet extends HttpServlet {
 
-
-
     //springmvc容器对象 key 类名ID    value  对象
     private ConcurrentHashMap<String, Object> sppringmvcBeans = new ConcurrentHashMap<String, Object>();
 
@@ -104,15 +105,47 @@ public class ExtDispathcherServlet extends HttpServlet {
             ExtController declaredAnnotation = classInfo.getDeclaredAnnotation(ExtController.class);
             if(declaredAnnotation != null){
                 String beanId = ClassUtil.toLowerCaseFirstOne(classInfo.getSimpleName());
-                Object object = classInfo.newInstance();
-                sppringmvcBeans.put(beanId,object);
+                Object newInstance = ClassUtil.newInstance(classInfo);
+                sppringmvcBeans.put(beanId,newInstance);
             }
-
         }
     }
 
     //将URL映射和方法进行关联
     public void handlerMapping(){
+
+        //  1.遍历SpringmvcBeans容器 判断类上属性是否有url映射注解
+        //  2.遍历所有的方法上是否有url映射注解
+
+        //  获取bean对象
+        for (Map.Entry<String, Object> entry : sppringmvcBeans.entrySet()) {
+            Object entryValue = entry.getValue();
+            Class<?> entryValueClass = entryValue.getClass();
+            ExtRequestMapping declaredAnnotation = entryValueClass.getDeclaredAnnotation(ExtRequestMapping.class);
+            String baseUrl = "";
+
+            if(declaredAnnotation != null){
+                baseUrl = declaredAnnotation.value();
+            }
+
+            //  判断方法上是否加有url映射地址
+            Method[] declaredMethods = entryValueClass.getDeclaredMethods();
+            for (Method declaredMethod : declaredMethods) {
+                ExtRequestMapping declaredAnnotation1 = declaredMethod.getDeclaredAnnotation(ExtRequestMapping.class);
+                if(declaredAnnotation1 != null){
+                    //  拼接方法url
+                    String methodUrl = baseUrl + declaredAnnotation1.value();
+
+                    //  SpringMVC 容器对象 key:请求地址, value:请求的类对象
+                    urlBeans.put(methodUrl,entryValue);
+                    // SpringMVC 容器对象 key:请求地址 value:方法名称
+                    urlBMethods.put(methodUrl,declaredMethod.getName());
+
+                }
+            }
+
+
+        }
 
     }
 }
