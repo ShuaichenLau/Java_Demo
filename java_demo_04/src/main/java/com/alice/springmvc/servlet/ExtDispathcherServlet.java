@@ -193,7 +193,7 @@ public class ExtDispathcherServlet extends HttpServlet {
                 ExtRequestMapping declaredAnnotation1 = declaredMethod.getDeclaredAnnotation(ExtRequestMapping.class);
                 if(declaredAnnotation1 != null){
                     //  拼接方法url
-                    String methodUrl = "/demo"+baseUrl + declaredAnnotation1.value();
+                    String methodUrl = baseUrl + declaredAnnotation1.value();
 
                     //  SpringMVC 容器对象 key:请求地址, value:请求的类对象
                     urlBeans.put(methodUrl,entryValue);
