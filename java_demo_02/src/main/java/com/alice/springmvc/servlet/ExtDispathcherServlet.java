@@ -3,10 +3,15 @@ package com.alice.springmvc.servlet;
 import com.alice.spring.extannotation.ExtController;
 import com.alice.spring.extannotation.ExtRequestMapping;
 import com.alice.utils.ClassUtil;
+import org.springframework.util.StringUtils;
 
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
+import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.List;
 import java.util.Map;
@@ -81,7 +86,7 @@ public class ExtDispathcherServlet extends HttpServlet {
     private ConcurrentHashMap<String, Object> urlBeans = new ConcurrentHashMap<String, Object>();
 
     //springmvc容器对象 key 请求地址    value  方法名称
-    private ConcurrentHashMap<String, Object> urlBMethods = new ConcurrentHashMap<String, Object>();
+    private ConcurrentHashMap<String, String> urlBMethods = new ConcurrentHashMap<String, String>();
 
 
     @Override
@@ -91,7 +96,7 @@ public class ExtDispathcherServlet extends HttpServlet {
 
         try {
             findClassMVCAnnotation(classes);
-
+            handlerMapping();
         } catch (IllegalAccessException e) {
             e.printStackTrace();
         } catch (InstantiationException e) {
@@ -99,6 +104,58 @@ public class ExtDispathcherServlet extends HttpServlet {
         }
 
     }
+
+    @Override
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        //  ##################处理请求##################
+        //  1.获取请求url地址
+        String requestURI = req.getRequestURI();
+        if(requestURI.isEmpty()){
+            return ;
+        }
+        //  2.从Map集合中获取控制对象
+        Object obj = urlBeans.get(requestURI);
+        if(obj == null){
+            resp.getWriter().println("url not found 404");
+            return ;
+        }
+        //  3.使用Url地址获取方法
+        String methodName = urlBMethods.get(requestURI);
+        if(StringUtils.isEmpty(methodName)){
+            resp.getWriter().println("method not found 404");
+            return ;
+        }
+        //  4.使用Java反射机制调用方法
+        String resultPage = (String)methodInvoke(obj, methodName);
+        resp.getWriter().println(resultPage);
+        //  5.使用Java反射机制获取"方法返回结果'
+        //  6.使用视图转换器渲染给页面展示
+
+    }
+
+    public Object methodInvoke(Object obj,String methodName){
+        try {
+            Class<?> classInfo = obj.getClass();
+            Method method = classInfo.getMethod(methodName);
+            Object result = method.invoke(obj);
+            return result;
+        } catch (NoSuchMethodException e) {
+            e.printStackTrace();
+        } catch (IllegalAccessException e) {
+            e.printStackTrace();
+        } catch (InvocationTargetException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+
+
+    @Override
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        doPost(req, resp);
+    }
+
     //将扫包范围所有的类,注入到SpringMVC容器里面, 存放在Map集合中key为默认类名小写 ,value对象
     public void findClassMVCAnnotation(List<Class<?>> classes) throws IllegalAccessException, InstantiationException {
         for (Class<?> classInfo : classes) {
@@ -111,7 +168,7 @@ public class ExtDispathcherServlet extends HttpServlet {
         }
     }
 
-    //将URL映射和方法进行关联
+    //将URL映射和方法进行关联  处理器映射器
     public void handlerMapping(){
 
         //  1.遍历SpringmvcBeans容器 判断类上属性是否有url映射注解
@@ -146,6 +203,6 @@ public class ExtDispathcherServlet extends HttpServlet {
 
 
         }
-
     }
+
 }
