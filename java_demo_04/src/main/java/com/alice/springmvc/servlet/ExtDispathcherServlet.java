@@ -131,11 +131,17 @@ public class ExtDispathcherServlet extends HttpServlet {
             return ;
         }
         //  4.使用Java反射机制调用方法
+        //	5.使用Java反射机制获取"方法返回结果'
         String resultPage = (String)methodInvoke(obj, methodName);
         resp.getWriter().println(resultPage);
-        //  5.使用Java反射机制获取"方法返回结果'
         //  6.使用视图转换器渲染给页面展示
-
+        extResourceViewResolver(resultPage, req, resp);
+    }
+    
+    public void extResourceViewResolver(String packName,HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException{
+    	String prefix = "/";
+    	String suffix = ".jsp";
+    	req.getRequestDispatcher(prefix+packName+suffix).forward(req, resp);
     }
 
     public Object methodInvoke(Object obj,String methodName){
@@ -153,10 +159,6 @@ public class ExtDispathcherServlet extends HttpServlet {
         }
         return null;
     }
-
-
-
-
 
     //将扫包范围所有的类,注入到SpringMVC容器里面, 存放在Map集合中key为默认类名小写 ,value对象
     public void findClassMVCAnnotation(List<Class<?>> classes) throws IllegalAccessException, InstantiationException {

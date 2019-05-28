@@ -10,7 +10,7 @@ public class ExtIndexController {
     @ExtRequestMapping("/test")
     public String index(){
         System.out.println("手写SpringMVC框架");
-        return "index";
+        return "helloWorld";
     }
 
 }
