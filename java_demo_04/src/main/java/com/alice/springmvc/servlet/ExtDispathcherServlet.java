@@ -138,6 +138,7 @@ public class ExtDispathcherServlet extends HttpServlet {
         extResourceViewResolver(resultPage, req, resp);
     }
     
+    // 6.使用视图转换器渲染给页面展示
     public void extResourceViewResolver(String packName,HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException{
     	String prefix = "/";
     	String suffix = ".jsp";
@@ -204,8 +205,6 @@ public class ExtDispathcherServlet extends HttpServlet {
 
                 }
             }
-
-
         }
     }
 
