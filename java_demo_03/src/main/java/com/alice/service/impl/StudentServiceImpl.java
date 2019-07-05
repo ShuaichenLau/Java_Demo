@@ -1,8 +1,8 @@
-package com.alice.service.impl.impl;
+package com.alice.service.impl;
 
 import com.alice.dao.StudentDao;
 import com.alice.entity.StudentEntity;
-import com.alice.service.impl.StudentService;
+import com.alice.service.StudentService;
 import com.baomidou.mybatisplus.service.impl.ServiceImpl;
 import com.google.common.collect.Lists;
 import org.slf4j.Logger;

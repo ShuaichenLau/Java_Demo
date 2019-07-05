@@ -1,4 +1,4 @@
-package com.alice.service.impl;
+package com.alice.service;
 
 
 import com.alice.entity.StudentEntity;

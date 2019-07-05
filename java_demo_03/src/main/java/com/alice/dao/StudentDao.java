@@ -2,8 +2,9 @@ package com.alice.dao;
 
 import com.alice.entity.StudentEntity;
 import com.baomidou.mybatisplus.core.conditions.Wrapper;
-import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+
 import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.baomidou.mybatisplus.mapper.BaseMapper;
 import groovy.util.logging.Commons;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.session.RowBounds;
@@ -19,20 +20,9 @@ import java.util.Map;
 @Mapper
 @Commons
 @Resource
-public interface StudentDao extends BaseMapper<StudentEntity>, com.baomidou.mybatisplus.mapper.BaseMapper<StudentEntity> {
+public interface StudentDao extends BaseMapper<StudentEntity>{
 
     final static Logger logger = LoggerFactory.getLogger(StudentDao.class);
-
-
-    @Override
-    default int delete(Wrapper<StudentEntity> wrapper) {
-        return 0;
-    }
-
-    @Override
-    default int update(StudentEntity entity, Wrapper<StudentEntity> updateWrapper) {
-        return 0;
-    }
 
     @Override
     default Integer insert(StudentEntity studentEntity) {
@@ -132,41 +122,6 @@ public interface StudentDao extends BaseMapper<StudentEntity>, com.baomidou.myba
 
     @Override
     default List<Map<String, Object>> selectMapsPage(RowBounds rowBounds, com.baomidou.mybatisplus.mapper.Wrapper<StudentEntity> wrapper) {
-        return null;
-    }
-
-    @Override
-    default StudentEntity selectOne(Wrapper<StudentEntity> queryWrapper) {
-        return null;
-    }
-
-    @Override
-    default Integer selectCount(Wrapper<StudentEntity> queryWrapper) {
-        return null;
-    }
-
-    @Override
-    default List<StudentEntity> selectList(Wrapper<StudentEntity> queryWrapper) {
-        return null;
-    }
-
-    @Override
-    default List<Map<String, Object>> selectMaps(Wrapper<StudentEntity> queryWrapper) {
-        return null;
-    }
-
-    @Override
-    default List<Object> selectObjs(Wrapper<StudentEntity> queryWrapper) {
-        return null;
-    }
-
-    @Override
-    default IPage<StudentEntity> selectPage(IPage<StudentEntity> page, Wrapper<StudentEntity> queryWrapper) {
-        return null;
-    }
-
-    @Override
-    default IPage<Map<String, Object>> selectMapsPage(IPage<StudentEntity> page, Wrapper<StudentEntity> queryWrapper) {
         return null;
     }
 }

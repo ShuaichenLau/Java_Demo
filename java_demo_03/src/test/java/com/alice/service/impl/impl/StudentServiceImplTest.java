@@ -1,7 +1,8 @@
 package com.alice.service.impl.impl;
 
 import com.alice.entity.StudentEntity;
-import com.alice.service.impl.StudentService;
+import com.alice.service.StudentService;
+import com.alice.service.impl.StudentServiceImpl;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
