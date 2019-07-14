@@ -1,5 +1,7 @@
 package com.alice01.sort;
 
+import java.util.concurrent.Callable;
+
 /**
  * @author liusc
  * 冒泡排序
@@ -45,7 +47,6 @@ public class BubbleSortDemo {
         int[] arr = {1, 1, 2, 0, 9, 3, 12, 7, 8, 3, 4, 65, 22};
 
         BubbleSortDemo.bubbleSortDemo01(arr, arr.length);
-
         for (int i : arr) {
             System.out.print(i + ",");
         }
