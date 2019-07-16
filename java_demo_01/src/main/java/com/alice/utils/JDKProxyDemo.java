@@ -5,8 +5,8 @@ import org.springframework.cglib.proxy.InvocationHandler;
 import java.lang.reflect.Method;
 
 /**
- * 动态代理
- * cglib实现
+ * 静态代理
+ * jdk实现
  */
 public class JDKProxyDemo implements InvocationHandler {
 
