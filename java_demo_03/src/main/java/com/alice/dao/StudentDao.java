@@ -1,9 +1,6 @@
 package com.alice.dao;
 
 import com.alice.entity.StudentEntity;
-import com.baomidou.mybatisplus.core.conditions.Wrapper;
-
-import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.mapper.BaseMapper;
 import groovy.util.logging.Commons;
 import org.apache.ibatis.annotations.Mapper;
@@ -20,7 +17,7 @@ import java.util.Map;
 @Mapper
 @Commons
 @Resource
-public interface StudentDao extends BaseMapper<StudentEntity>{
+public interface StudentDao extends BaseMapper<StudentEntity> {
 
     final static Logger logger = LoggerFactory.getLogger(StudentDao.class);
 
