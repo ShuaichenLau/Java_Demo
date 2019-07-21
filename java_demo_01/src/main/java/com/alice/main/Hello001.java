@@ -11,18 +11,22 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.util.StringUtils;
 
 import java.io.InputStream;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Iterator;
 import java.util.List;
+import java.util.TimeZone;
+import java.util.logging.SimpleFormatter;
 
 public class Hello001 {
 
     public static void main(String[] args) {
-//        int i = 0;
-//        System.out.println(++i);
-//        System.out.println(++i);
+        int i = 0;
+        System.out.println(++i);
+        System.out.println(++i);
 
-//        System.out.println(System.currentTimeMillis());
-//        System.out.println(true == false);
+        System.out.println(System.currentTimeMillis());
+        System.out.println(true == false);
 
         ClassPathXmlApplicationContext classPathXmlApplicationContext = new ClassPathXmlApplicationContext("spring.xml");
         Uservice userService = (Uservice)classPathXmlApplicationContext.getBean("userService");
@@ -36,6 +40,18 @@ public class Hello001 {
         Hello001 hello001 = new Hello001();
         hello001.test001();
 
+        System.out.println("========================================");
+
+
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat();
+        Calendar calendar = Calendar.getInstance();
+
+        simpleDateFormat.setTimeZone(TimeZone.getTimeZone("America/New_York"));
+
+        calendar.setTimeZone(TimeZone.getTimeZone("America/New_York"));
+
+        System.out.println(calendar.getTime());
+        System.out.println(simpleDateFormat.format(calendar.getTime()));
 
     }
 
