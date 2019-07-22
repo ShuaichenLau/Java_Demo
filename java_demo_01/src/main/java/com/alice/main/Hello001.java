@@ -16,11 +16,15 @@ import java.util.Calendar;
 import java.util.Iterator;
 import java.util.List;
 import java.util.TimeZone;
-import java.util.logging.SimpleFormatter;
 
 public class Hello001 {
 
     public static void main(String[] args) {
+
+        main_liusc();
+    }
+
+    public static void main_liusc() {
         int i = 0;
         System.out.println(++i);
         System.out.println(++i);
@@ -29,7 +33,7 @@ public class Hello001 {
         System.out.println(true == false);
 
         ClassPathXmlApplicationContext classPathXmlApplicationContext = new ClassPathXmlApplicationContext("spring.xml");
-        Uservice userService = (Uservice)classPathXmlApplicationContext.getBean("userService");
+        Uservice userService = (Uservice) classPathXmlApplicationContext.getBean("userService");
         User user = new User();
         user.setId(1);
         user.setName("alice");
@@ -39,8 +43,6 @@ public class Hello001 {
 
         Hello001 hello001 = new Hello001();
         hello001.test001();
-
-        System.out.println("========================================");
 
 
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat();
@@ -52,11 +54,10 @@ public class Hello001 {
 
         System.out.println(calendar.getTime());
         System.out.println(simpleDateFormat.format(calendar.getTime()));
-
     }
 
 
-    public void test001(){
+    public void test001() {
         SAXReader saxReader = new SAXReader();
         try {
             //读取xml文件
@@ -70,7 +71,7 @@ public class Hello001 {
         }
     }
 
-    public void getNodes(Element element){
+    public void getNodes(Element element) {
         System.out.print("获取节点名称: " + element.getName());
         //获取属性方法
         List<Attribute> attributes = element.attributes();
@@ -79,19 +80,19 @@ public class Hello001 {
         }
         //获取属性value
         String textTrim = element.getTextTrim();
-        if (StringUtils.isEmpty(textTrim)){
+        if (StringUtils.isEmpty(textTrim)) {
             System.out.print("textTrim==>" + textTrim);
         }
 
         //使用迭代器 子节点信息
         Iterator<Element> iterator = element.elementIterator();
-        while (iterator.hasNext()){
+        while (iterator.hasNext()) {
             Element next = iterator.next();
             getNodes(next);
         }
     }
 
-    public InputStream getResourceAsStream(String xml){
+    public InputStream getResourceAsStream(String xml) {
         InputStream resourceAsStream = this.getClass().getClassLoader().getResourceAsStream(xml);
         return resourceAsStream;
 
