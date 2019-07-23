@@ -34,7 +34,10 @@ public class ExtClassPathXmlApplicationContext {
         return classInfo.newInstance();
     }
 
-    //初始化对象
+    /**
+     * 初始化对象
+     * @throws Exception
+     */
     protected void initInstance() throws Exception {
         // 1.使用Java反射机制扫包 获取当前包下所有的类
         List<Class<?>> classes = ClassUtil.getClasses(packageName);
@@ -45,6 +48,11 @@ public class ExtClassPathXmlApplicationContext {
         }
     }
 
+    /**
+     * 判断类是否有ExtService注解
+     * @param classes
+     * @return
+     */
     protected ConcurrentHashMap<String, Class<?>> findClassExisAnnotation(List<Class<?>> classes) {
         // 判断类上是否存在注入bean注解
         for (Class<?> classInfo : classes) {
