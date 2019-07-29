@@ -32,6 +32,13 @@
             <version>1.5.9.RELEASE</version>
         </dependency>
 
+        <!-- https://mvnrepository.com/artifact/org.apache.poi/poi -->
+        <dependency>
+            <groupId>org.apache.poi</groupId>
+            <artifactId>poi</artifactId>
+            <version>3.17</version>
+        </dependency>
+
 
         <dependency>
             <groupId>org.springframework.boot</groupId>
