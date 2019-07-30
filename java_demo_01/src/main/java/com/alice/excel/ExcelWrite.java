@@ -50,29 +50,29 @@ public class ExcelWrite {
         }
 
 
-//        //在sheet中创建一行
-//        HSSFRow row = sheet.createRow(0);
-//
-//        //在该行写入各种类型的数据
-//        row.createCell(0).setCellValue(true);
-//        row.createCell(1).setCellValue("钟林森");
-//        row.createCell(2).setCellValue(23);
-//
-//        //设置保留两位小数
-//        HSSFCell cell = row.createCell(3);
-//        cell.setCellValue(6000);
-//        HSSFCellStyle cellStyle = wb.createCellStyle();
-//        cellStyle.setDataFormat(HSSFDataFormat.getBuiltinFormat("0.00"));
-//        cell.setCellStyle(cellStyle);
-//
-//        //在写入 日期格式的 数据需要进行特殊处理(这是一种 简单的处理方式)
-//        CreationHelper createHelper = wb.getCreationHelper();
-//        HSSFCellStyle style = wb.createCellStyle();
-//        style.setDataFormat(createHelper.createDataFormat().getFormat("yyyy-MM-dd"));
-//
-//        cell = row.createCell(4);
-//        cell.setCellValue(new Date());
-//        cell.setCellStyle(style);
+        //在sheet中创建一行
+        HSSFRow row = sheet.createRow(0);
+
+        //在该行写入各种类型的数据
+        row.createCell(0).setCellValue(true);
+        row.createCell(1).setCellValue("钟林森");
+        row.createCell(2).setCellValue(23);
+
+        //设置保留两位小数
+        HSSFCell cell = row.createCell(3);
+        cell.setCellValue(6000);
+        HSSFCellStyle cellStyle = wb.createCellStyle();
+        cellStyle.setDataFormat(HSSFDataFormat.getBuiltinFormat("0.00"));
+        cell.setCellStyle(cellStyle);
+
+        //在写入 日期格式的 数据需要进行特殊处理(这是一种 简单的处理方式)
+        CreationHelper createHelper = wb.getCreationHelper();
+        HSSFCellStyle style = wb.createCellStyle();
+        style.setDataFormat(createHelper.createDataFormat().getFormat("yyyy-MM-dd"));
+
+        cell = row.createCell(4);
+        cell.setCellValue(new Date());
+        cell.setCellStyle(style);
 
         //最后写回磁盘
         FileOutputStream out = new FileOutputStream("D:\\GitHub_liusc\\Java_Demo\\java_demo_01\\src\\main\\resources\\要匹配的数据01.xls");
