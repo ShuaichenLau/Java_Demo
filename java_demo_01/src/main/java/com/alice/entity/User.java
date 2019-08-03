@@ -1,8 +1,11 @@
 package com.alice.entity;
 
+import lombok.Data;
+
 import java.io.Serializable;
 
-public class User implements Serializable{
+@Data
+public class User implements Serializable {
 
     private int Id;
 
