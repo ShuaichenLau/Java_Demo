@@ -12,10 +12,7 @@ import org.springframework.util.StringUtils;
 
 import java.io.InputStream;
 import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.Iterator;
-import java.util.List;
-import java.util.TimeZone;
+import java.util.*;
 
 public class Hello001 {
 
@@ -54,6 +51,13 @@ public class Hello001 {
 
         System.out.println(calendar.getTime());
         System.out.println(simpleDateFormat.format(calendar.getTime()));
+
+//        lambda表达式
+        new Thread(() -> System.out.println(new Date().toString())).start();
+
+        new Thread(() -> {
+            System.out.println(new Date().toString());
+        });
     }
 
 
