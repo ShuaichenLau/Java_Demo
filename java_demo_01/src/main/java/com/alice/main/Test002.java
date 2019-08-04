@@ -16,8 +16,10 @@ class ThreadDemo extends Thread {
 
 public class Test002 {
     public static void main(String[] args) throws InterruptedException {
-        new ThreadDemo().start();
-        new ThreadDemo().start();
+
+        for (int i = 0; i < 5; i++) {
+            new ThreadDemo().start();
+        }
 
     }
 }
