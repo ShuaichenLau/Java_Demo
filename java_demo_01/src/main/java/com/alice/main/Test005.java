@@ -38,6 +38,9 @@ class ResThread extends Thread {
     }
 
 
+    /**
+     * 停止线程
+     */
     public void stopThread() {
         threadFlag = false;
         System.out.println(getName() + "--- 线程 stop");
