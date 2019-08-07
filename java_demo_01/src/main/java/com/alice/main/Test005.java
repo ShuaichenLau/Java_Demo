@@ -1,13 +1,31 @@
 package com.alice.main;
 
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.UUID;
+
 public class Test005 {
+
+    private static final HashMap<Object, Object> objectObjectHashMap = new HashMap<>();
 
     public static void main(String[] args) {
         ResThread resThread01 = new ResThread();
         resThread01.start();
         ResThread resThread02 = new ResThread();
         resThread02.start();
+
+        for (int i = 0; i < 100000; i++) {
+            objectObjectHashMap.put(UUID.randomUUID(),UUID.randomUUID());
+        }
+
+        System.out.println(objectObjectHashMap.size());
+
+
+        ArrayList<Object> objects = new ArrayList<>();
+
+
+
 
     }
 
