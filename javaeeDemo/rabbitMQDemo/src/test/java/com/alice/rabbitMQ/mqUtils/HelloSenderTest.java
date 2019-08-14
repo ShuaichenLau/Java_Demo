@@ -7,6 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import java.util.UUID;
+
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = Bootstrap.class)
 public class HelloSenderTest {
@@ -16,6 +18,8 @@ public class HelloSenderTest {
 
     @Test
     public void test() {
+        helloSender.amqpTemplate.convertAndSend("liusc", UUID.randomUUID().toString());
         helloSender.send();
+
     }
 }

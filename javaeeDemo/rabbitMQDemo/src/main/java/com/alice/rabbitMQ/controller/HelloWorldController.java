@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.Random;
 import java.util.UUID;
 
 @RestController
@@ -21,21 +22,6 @@ public class HelloWorldController {
 
     @RequestMapping("/")
     public String index() {
-
-        for (int i = 0; i < 1000; i++) {
-
-            User user = new User();
-            user.setId(UUID.randomUUID().toString());
-            user.setName("alice");
-            user.setAddress("beijing");
-            user.setAge(25);
-
-            helloSender.send();
-
-            helloSender.amqpTemplate.convertAndSend("alice", user.toString());
-        }
-        
-        
         return "HelloWorld";
     }
 
@@ -50,11 +36,28 @@ public class HelloWorldController {
         user.setAddress("beijing");
         user.setAge(25);
 
-        helloSender.send();
-
-        helloSender.amqpTemplate.convertAndSend("alice", user.toString());
-
-
         return user.toString();
+    }
+
+    @RequestMapping("/install")
+    public String installStringList(){
+        logger.info("com.alice.rabbitMQ.controller.HelloWorldController.installStringList");
+
+
+        try {
+            User user = new User();
+            user.setId(UUID.randomUUID().toString());
+            user.setName("alice");
+            user.setAddress("beijing");
+            user.setAge((int)(Math.random() * 11));
+
+            helloSender.send();
+            helloSender.amqpTemplate.convertAndSend("alice", user.toString());
+
+            return "success";
+        } catch (Exception e) {
+            e.printStackTrace();
+            return "failed";
+        }
     }
 }
