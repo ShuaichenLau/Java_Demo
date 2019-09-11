@@ -21,7 +21,7 @@ public class UserController {
 
     private AtomicInteger atomicInteger = new AtomicInteger();
 
-    @RequestMapping("/insert")
+    @RequestMapping("/add")
     public String insertUser(){
 
         User user = new User();
