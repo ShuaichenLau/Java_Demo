@@ -8,12 +8,13 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 </head>
 <body>
-<div class="panel panel-primary">
+<div class="panel panel-primary" style="padding: 20px 20px 20px 20px">
     <div class="panel-heading">
-        <h3 class="panel-title">访问model</h3>
+        <h3 class="panel-title" th:text="${userName}"></h3>
+        <!--<p th:text="${userName}"> Welcome to our grocery store!</p>-->
     </div>
 </div>
-<div th:if="${not #lists.isEmpty(userList)}">
+<div th:if="${not #lists.isEmpty(userList)}" style="padding: 20px 20px 20px 20px">
     <div class="panel panel-primary">
         <div class="panel-heading">
             <h3 class="panel-title">列表</h3>
@@ -22,10 +23,16 @@
             <ul class="list-group">
                 <li class="list-group-item" th:each="user : ${userList}">
                     <span th:text="${user.getUserId()}"></span>
-                    <span id="userNameSpanId" th:text="${user.getUserName()}"></span>
+                    <span th:text="${user.getUserName()}"></span>
                     <span th:text="${user.getPassword()}"></span>
                     <span th:text="${user.getPhone()}"></span>
-                    <button class="btn" th:onlick="'getName(\''+${user.getUserName()}+'\');'">获得名字</button>
+                    <!--<button class="btn" th:onclick="'javascript:getName('+${user.getUserName()}+');'">获得名字</button>-->
+                    <!--<input type="button" class="btn" value="获得名字" th:οnclick="'getName(\''+${user.getUserName()}+'\')'"/>-->
+                    <!--<input type="button" class="btn" value="获得名字" th:οnclick="'javascript:getName(\''+${user.userName}+'\')'"/>-->
+                    <!--<input type="button" th:onclick="'javascript:getName(\''+${user.getUserName()}+'\');'" value = "获得名字" />-->
+
+                    <button class="btn" th:onclick="getName([[${user.getUserName()}]]);">获得名字</button>
+
                 </li>
             </ul>
         </div>
@@ -33,21 +40,17 @@
 </div>
 <!--<script th:src="@{/jquery/jquery-3.2.1.min.js}"></script>-->
 <!--<script th:src="@{/bootstrap/js/bootstrap.min.js}"></script>-->
-<script th:inline="javascript">
+<script type="text/javascript">
 
 $(document).ready(function(){
 
 
 });
 
-$(function(){
-
-});
-
 function getName(name) {
-    alert("1111");
     console.log(name);
 };
+
 
 </script>
 </body>

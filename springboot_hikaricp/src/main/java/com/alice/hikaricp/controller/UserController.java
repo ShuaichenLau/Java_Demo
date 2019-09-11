@@ -38,6 +38,7 @@ public class UserController {
     @RequestMapping("/showAllUser")
     public String getAllUserList(Model model) {
         List<User> byAllUser = userService.getByAllUser();
+        model.addAttribute("userName","liusc");
         model.addAttribute("userList",byAllUser);
         return "user/showAllUser";
     }
