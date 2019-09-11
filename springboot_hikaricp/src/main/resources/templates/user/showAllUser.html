@@ -4,19 +4,17 @@
     <meta content="text/html;charset=UTF-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
 
-    <script th:src="@{http://cdn.bootcss.com/jquery/1.11.2/jquery.min.js}"></script>
-    <script th:src="@{https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js}"></script>
-    <link rel="stylesheet" th:href="@{https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css}" >
+    <script th:src="@{http://cdn.bootcss.com/jquery/1.11.2/jquery.min.js}"/>
+    <script th:src="@{https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js}"/>
+    <link rel="stylesheet" th:href="@{https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css}" />
+    <link rel="stylesheet" th:href="@{https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap-theme.min.css}" />
 
-    <!--<script src="http://cdn.bootcss.com/jquery/1.11.2/jquery.min.js"></script>-->
-    <!--<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>-->
-    <!--<link rel="stylesheet" th:href="" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">-->
+
 </head>
 <body>
 <div class="panel panel-primary" style="padding: 20px 20px 20px 20px">
     <div class="panel-heading">
-        <h3 class="panel-title" th:text="${userName}"></h3>
-        <!--<p th:text="${userName}"> Welcome to our grocery store!</p>-->
+        <h3 class="panel-title" th:text="${logName}"></h3>
     </div>
 </div>
 <div th:if="${not #lists.isEmpty(userList)}" style="padding: 20px 20px 20px 20px">
@@ -31,17 +29,7 @@
                     <span th:text="${user.getUserName()}"></span>
                     <span th:text="${user.getPassword()}"></span>
                     <span th:text="${user.getPhone()}"></span>
-                    <!--<button class="btn" th:onclick="'javascript:getName('+${user.getUserName()}+');'">获得名字</button>-->
-                    <!--<input type="button" class="btn" value="获得名字" th:οnclick="'getName(\''+${user.getUserName()}+'\')'"/>-->
-                    <!--<input type="button" class="btn" value="获得名字" th:οnclick="'javascript:getName(\''+${user.userName}+'\')'"/>-->
-                    <!--<input type="button" th:onclick="'javascript:getName(\''+${user.getUserName()}+'\');'" value = "获得名字" />-->
-
                     <button class="btn" th:onclick="getName([[${user.getUserName()}]]);">获得名字1</button>
-
-                    <!--<input type="button" th:onclick="|javascript:getName(${user.getUserName()})|" value = "获得名字2" />-->
-
-
-
                 </li>
             </ul>
         </div>
