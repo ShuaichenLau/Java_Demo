@@ -12,7 +12,7 @@ public interface IUserService {
 
     User updateUser(User user);
 
-    List<User> getByAllUser(User user);
+    List<User> getByAllUser();
 
     User getByUserId(String userId);
 

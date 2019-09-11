@@ -2,16 +2,19 @@ package com.alice.hikaricp.controller;
 
 import com.alice.hikaricp.entity.User;
 import com.alice.hikaricp.service.IUserService;
+import com.alice.hikaricp.utils.RandomValueUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.ResponseBody;
 
+import java.util.List;
 import java.util.UUID;
-import java.util.concurrent.atomic.AtomicInteger;
 
-@RestController
+@Controller
 @RequestMapping("/user")
 public class UserController {
     private final Logger logger = LoggerFactory.getLogger(UserController.class);
@@ -19,18 +22,24 @@ public class UserController {
     @Autowired
     private IUserService userService;
 
-    private AtomicInteger atomicInteger = new AtomicInteger();
-
+    @ResponseBody
     @RequestMapping("/add")
-    public String insertUser(){
-
+    public String insertUser() {
         User user = new User();
-        user.setUserName("alice" + atomicInteger.decrementAndGet());
-        user.setPassword(UUID.randomUUID().toString().replaceAll("-",""));
-        user.setPhone("17610071080");
+        user.setUserName(RandomValueUtil.getChineseName());
+        user.setPassword(UUID.randomUUID().toString().replaceAll("-", ""));
+        user.setPhone(RandomValueUtil.getTelephone());
 
         userService.insertUser(user);
         return user.toString();
+    }
+
+
+    @RequestMapping("/showAllUser")
+    public String getAllUserList(Model model) {
+        List<User> byAllUser = userService.getByAllUser();
+        model.addAttribute("userList",byAllUser);
+        return "user/showAllUser";
     }
 
 }

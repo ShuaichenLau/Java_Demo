@@ -39,8 +39,10 @@ public class UserServiceImpl implements IUserService {
     }
 
     @Override
-    public List<User> getByAllUser(User user) {
-        return null;
+    public List<User> getByAllUser() {
+        logger.info("com.alice.hikaricp.service.impl.UserServiceImpl.getByAllUser");
+        List<User> users = userDao.selectUsers();
+        return users;
     }
 
     @Override
