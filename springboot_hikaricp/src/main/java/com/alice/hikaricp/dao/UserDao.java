@@ -14,9 +14,11 @@ public interface UserDao extends BaseMapper<User> {
 
     int insertUser(User record);
 
-    void deleteUserById(@Param("userId") Integer userId);
+    int deleteUserById(@Param("userId") Integer userId);
 
-    void updateUser(User userDomain);
+    boolean updateUser(User userDomain);
 
     List<User> selectUsers();
+
+    User getUserByUserId(@Param("userId") Integer userId);
 }

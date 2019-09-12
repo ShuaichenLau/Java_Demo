@@ -22,7 +22,7 @@ public class UserServiceImpl implements IUserService {
     public boolean insertUser(User user) {
         logger.info("com.alice.hikaricp.service.impl.UserServiceImpl.insertUser");
         int insertCount = userDao.insertUser(user);
-        if (insertCount > 0){
+        if (insertCount > 0) {
             return true;
         }
         return false;
@@ -30,12 +30,16 @@ public class UserServiceImpl implements IUserService {
 
     @Override
     public int deleteUser(User user) {
-        return 0;
+        logger.info("com.alice.hikaricp.service.impl.UserServiceImpl.deleteUser");
+        return userDao.deleteUserById(user.getUserId());
     }
 
     @Override
     public User updateUser(User user) {
-        return null;
+        logger.info("com.alice.hikaricp.service.impl.UserServiceImpl.updateUser");
+        userDao.updateUser(user);
+        User userByUserId = userDao.getUserByUserId(user.getUserId());
+        return userByUserId;
     }
 
     @Override
@@ -46,7 +50,9 @@ public class UserServiceImpl implements IUserService {
     }
 
     @Override
-    public User getByUserId(String userId) {
-        return null;
+    public User getByUserId(Integer userId) {
+        logger.info("com.alice.hikaricp.service.impl.UserServiceImpl.getByUserId");
+        User userByUserId = userDao.getUserByUserId(userId);
+        return userByUserId;
     }
 }

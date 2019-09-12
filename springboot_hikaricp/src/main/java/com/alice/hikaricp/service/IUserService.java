@@ -14,6 +14,6 @@ public interface IUserService {
 
     List<User> getByAllUser();
 
-    User getByUserId(String userId);
+    User getByUserId(Integer userId);
 
 }

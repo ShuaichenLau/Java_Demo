@@ -9,15 +9,17 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
 import javax.sql.DataSource;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * HelloWorldDemo
+ */
 @Controller
-@RequestMapping("/")
+@RequestMapping("/hello")
 public class HelloWorldController {
 
     private final Logger logger = LoggerFactory.getLogger(HelloWorldController.class);
@@ -29,7 +31,7 @@ public class HelloWorldController {
     private IUserService userService;
 
     @ResponseBody
-    @RequestMapping("/")
+    @RequestMapping("/showConfig")
     public String index() {
 
         logger.info("com.alice.hikaricp.controller.HelloWorldController.index");
@@ -40,7 +42,6 @@ public class HelloWorldController {
 
         return "Greetings from Spring Boot! ";
     }
-
 
     @RequestMapping("/index")
     public String indexHtml(Model model){

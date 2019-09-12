@@ -14,6 +14,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import java.util.List;
 import java.util.UUID;
 
+/**
+ * user Controller
+ */
 @Controller
 @RequestMapping("/user")
 public class UserController {
@@ -42,5 +45,7 @@ public class UserController {
         model.addAttribute("userList",byAllUser);
         return "user/showAllUser";
     }
+
+
 
 }

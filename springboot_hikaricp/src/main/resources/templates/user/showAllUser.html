@@ -1,14 +1,13 @@
 <!DOCTYPE HTML>
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" >
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta content="text/html;charset=UTF-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
 
     <script th:src="@{http://cdn.bootcss.com/jquery/1.11.2/jquery.min.js}"/>
     <script th:src="@{https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js}"/>
-    <link rel="stylesheet" th:href="@{https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css}" />
-    <link rel="stylesheet" th:href="@{https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap-theme.min.css}" />
-
+    <link rel="stylesheet" th:href="@{https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css}"/>
+    <link rel="stylesheet" th:href="@{https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap-theme.min.css}"/>
 
 </head>
 <body>
@@ -17,7 +16,7 @@
         <h3 class="panel-title" th:text="${logName}"></h3>
     </div>
 </div>
-<div th:if="${not #lists.isEmpty(userList)}" style="padding: 20px 20px 20px 20px">
+<div th:if="${not #lists.isEmpty(userList)}" style="padding: 20pxp 20px 20px 20px">
     <div class="panel panel-primary">
         <div class="panel-heading">
             <h3 class="panel-title">列表</h3>
@@ -38,14 +37,14 @@
 
 <script th:inline="javascript">
 
-$(document).ready(function(){
+    $(document).ready(function () {
 
 
-});
+    });
 
-function getName(name) {
-    console.log(name);
-};
+    function getName(name) {
+        console.log(name);
+    };
 
 
 </script>
