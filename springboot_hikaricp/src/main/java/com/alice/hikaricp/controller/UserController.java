@@ -25,6 +25,10 @@ public class UserController {
     @Autowired
     private IUserService userService;
 
+    /**
+     * 添加user 随机生成一个user
+     * @return
+     */
     @ResponseBody
     @RequestMapping("/add")
     public String insertUser() {
@@ -37,7 +41,11 @@ public class UserController {
         return user.toString();
     }
 
-
+    /**
+     * 显示所有user
+     * @param model
+     * @return
+     */
     @RequestMapping("/showAllUser")
     public String getAllUserList(Model model) {
         List<User> byAllUser = userService.getByAllUser();
