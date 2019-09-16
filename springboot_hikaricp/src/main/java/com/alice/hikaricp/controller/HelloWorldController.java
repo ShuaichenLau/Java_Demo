@@ -36,9 +36,9 @@ public class HelloWorldController {
 
         logger.info("com.alice.hikaricp.controller.HelloWorldController.index");
 
-        logger.info("dataSource ==>" + dataSource.getClass());
+        logger.info("dataSource ==>  " + dataSource.getClass());
 
-        logger.info("userService ==>" + userService.getClass());
+        logger.info("userService ==>  " + userService.getClass());
 
         return "Greetings from Spring Boot! ";
     }

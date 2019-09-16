@@ -4,9 +4,6 @@ import lombok.Data;
 
 import java.io.Serializable;
 
-/**
- * t_user表 entity类
- */
 @Data
 public class User implements Serializable {
 
