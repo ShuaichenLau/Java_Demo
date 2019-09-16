@@ -37,7 +37,6 @@ public class UserController {
         return user.toString();
     }
 
-
     @RequestMapping("/showAllUser")
     public String getAllUserList(Model model) {
         List<User> byAllUser = userService.getByAllUser();
