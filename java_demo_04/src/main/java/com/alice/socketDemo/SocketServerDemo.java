@@ -1,4 +1,4 @@
-package com.alice.utils;
+package com.alice.socketDemo;
 
 import java.io.*;
 import java.net.ServerSocket;
@@ -14,7 +14,6 @@ import java.util.Scanner;
 public class SocketServerDemo {
 
     public static void main(String[] args) {
-
 
         try {
 
