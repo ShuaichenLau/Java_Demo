@@ -7,7 +7,7 @@ import java.util.Scanner;
 
 /**
  * SocketServerDemo
- * 获取网络输入输出流
+ * 获取网络输入输出流  TCP模型
  *  通过Socket获取输入流和输出流 这两个方法是使用Socket通讯的关键方法 封装了TCP协议的Socket是基于流建立通讯的
  *  所以我们在创建了双方连接之后,只需要获取相应的输入流和输出流即可实现通讯
  */
