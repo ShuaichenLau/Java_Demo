@@ -1,4 +1,4 @@
-package com.alice.socketDemo;
+package com.alice.tcpDemo;
 
 import java.io.*;
 import java.net.Socket;

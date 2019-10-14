@@ -1,4 +1,4 @@
-package com.alice.UDPDemo;
+package com.alice.udpDemo;
 
 import java.io.IOException;
 import java.net.*;
