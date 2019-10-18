@@ -14,6 +14,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import java.util.List;
 import java.util.UUID;
 
+import static com.alice.hikaricp.utils.RandomValueUtil.getTelephone;
+
 /**
  * user Controller
  */
@@ -35,7 +37,7 @@ public class UserController {
         User user = new User();
         user.setUserName(RandomValueUtil.getChineseName());
         user.setPassword(UUID.randomUUID().toString().replaceAll("-", ""));
-        user.setPhone(RandomValueUtil.getTelephone());
+        user.setPhone(getTelephone());
 
         userService.insertUser(user);
         return user.toString();
@@ -53,7 +55,6 @@ public class UserController {
         model.addAttribute("userList",byAllUser);
         return "user/showAllUser";
     }
-
 
 
 }

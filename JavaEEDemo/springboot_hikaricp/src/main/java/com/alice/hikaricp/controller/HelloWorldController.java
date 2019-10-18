@@ -41,6 +41,8 @@ public class HelloWorldController {
         logger.info("userService ==>  " + userService.getClass());
 
         return "Greetings from Spring Boot! ";
+
+
     }
 
     @RequestMapping("/index")
