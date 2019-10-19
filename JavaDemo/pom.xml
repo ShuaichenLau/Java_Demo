@@ -12,6 +12,7 @@
         <module>java_demo_02</module>
         <module>java_demo_03</module>
         <module>java_demo_04</module>
+        <module>JUC</module>
     </modules>
 
     <properties>
