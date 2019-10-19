@@ -13,6 +13,7 @@
         <module>java_demo_03</module>
         <module>java_demo_04</module>
         <module>JUC</module>
+        <module>tank</module>
     </modules>
 
     <properties>
