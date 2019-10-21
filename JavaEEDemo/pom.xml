@@ -11,6 +11,7 @@
     <modules>
         <module>rabbitMQDemo</module>
         <module>springboot_hikaricp</module>
+        <module>ssm_demo</module>
     </modules>
 
     <properties>
