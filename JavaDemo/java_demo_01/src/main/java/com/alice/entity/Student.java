@@ -8,6 +8,8 @@ import java.sql.Timestamp;
 @Data
 public class Student implements Serializable {
 
+    private static final int v = 8008;
+
     private Integer id;
     private String name;
     private String address;
