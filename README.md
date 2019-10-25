@@ -1,6 +1,7 @@
 
 
 
+
 设计模式
 
 hashMap 根据键的hashCode值存储数据,大多情况下可以直接定位到它的值。因此具有很快的访问速度。
@@ -99,6 +100,19 @@ Spring AOP的核心概念
 Spring AOP的两种代理方式：
     JDKProxy和Cglin
         默认的策略是如果目标类是接口，则使用JDK动态代理结束，否则使用Cglib来生成代理。
+Spring AOP的应用场景
+    1.Authentication 权限
+    2.Caching 缓存
+    3.Context passing 内容传递
+    4.Error handling 错误处理
+    5.Lazy loading 懒加载
+    6.Debugging 调试
+    7.Logging, tracing, profiling and monitorting 记录跟踪 优化 校准
+    8.Performance potimization 性能优化
+    9.Persistence 持久化
+    10.Resource pooling 资源池
+    11.Synchronization 同步
+    12.Transactions 事务
 
 SpringMVC的流程
 
