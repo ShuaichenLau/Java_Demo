@@ -12,6 +12,9 @@ import org.springframework.context.annotation.Import;
 public class Bootstrap {
 
     public static void main(String[] args) {
-        SpringApplication.run(Bootstrap.class,args);
+//        SpringApplication.run(Bootstrap.class,args);
+
+        SpringApplication springApplication = new SpringApplication(Bootstrap.class);
+        springApplication.run(args);
     }
 }
