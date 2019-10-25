@@ -3,7 +3,7 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
-        <artifactId>javaeeDemo</artifactId>
+        <artifactId>JavaEEDemo</artifactId>
         <groupId>con.alice</groupId>
         <version>1.0-SNAPSHOT</version>
     </parent>
@@ -13,7 +13,6 @@
 
     <properties>
         <springboot.version>2.1.7.RELEASE</springboot.version>
-
     </properties>
 
 
@@ -57,9 +56,9 @@
         </dependency>
 
         <!--<dependency>-->
-            <!--<groupId>org.springframework.amqp</groupId>-->
-            <!--<artifactId>spring-rabbit</artifactId>-->
-            <!--<version>1.3.6.RELEASE</version>-->
+        <!--<groupId>org.springframework.amqp</groupId>-->
+        <!--<artifactId>spring-rabbit</artifactId>-->
+        <!--<version>1.3.6.RELEASE</version>-->
         <!--</dependency>-->
 
         <dependency>
