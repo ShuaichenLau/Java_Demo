@@ -6,6 +6,7 @@
 
     <groupId>com.alice</groupId>
     <artifactId>JavaDemo</artifactId>
+    <packaging>pom</packaging>
     <version>1.0-SNAPSHOT</version>
     <modules>
         <module>java_demo_01</module>
@@ -14,6 +15,7 @@
         <module>java_demo_04</module>
         <module>JUC</module>
         <module>tank</module>
+        <module>websocket</module>
     </modules>
 
     <properties>
