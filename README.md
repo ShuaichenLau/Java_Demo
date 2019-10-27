@@ -72,6 +72,29 @@ tomcat优化
 zk+dubbo
 
 SpringBoot+SpringCloud
+    快速整合第三方框架,简化XML配置完全采用注解化,内置Web服务器(jetty tomcat),帮助开发者完成快速开发。最终用Java应用程序的形式进行执行
+    传统SSH SSM有些许缺点:比如要写很多xml配置文件,开发效率低,jar包冲突
+    SpringBoot底层已经完成实现版本统一maven继承原理。
+
+SpringCloud解决方案:
+    1.SpringCloud注册中心
+    2.客户端调用工具
+    3.网关
+    4.链路
+    5.服务跟踪
+    6.负载均衡
+    7.分布式配置中心
+    8.断路器
+SpringBoot和SpringCloud之间的关系
+    SpringCloud是一套微服务解决框架，在微服务领域通讯协议http+json格式
+    SpringCloud依赖于SpringBoot框架,SpringCloud使用SpringMVC书写http协议接口.
+
+SpringBoot与SpringMVC的关系
+    SpringBoot集成了SpringMVC web组件(集成关系)
+    整合SpringMVC框架
+
+互联网项目:敏捷开发 分布式和微服务项目，rpc通讯协议接口都是http+json格式=rest格式
+如果做微服务,需要SpringCloud整合SpringBoot,如果项目只是单纯使用SpringBoot不使用SpringCloud,这个项目不需要微服务.
 
 SpringMVC的请求流程
 
