@@ -19,5 +19,3 @@ count(1) count(*) count(列名)的区别
         如果表只有一个字段,则select count(*)执行效率是最好的
 
 
-
-    

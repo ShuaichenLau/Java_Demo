@@ -1,15 +1,20 @@
 
 
-
-
 设计模式
+    单例模式
+        懒汉式加载
+        饿汉式加载
+        双检锁/双重校验锁
+        登记式/静态内部类
+        枚举
+
 
 hashMap 根据键的hashCode值存储数据,大多情况下可以直接定位到它的值。因此具有很快的访问速度。
     （数组+链表+红黑树）
     hashMap最多只允许一条记录为null，允许多条记录的值为null。
     hashMap非线程安全，如果需要满足线程安全可以用collections的synchronizedMap方法使HashMap具有线程安全的能力
     或者使用JUC中的ConcurrentHashMap 分段锁。
-hashMap 1.7 和1.8的区别
+hashMap 1.7和1.8的区别
     1.7查找根据hash值能快速定位数组的具体下标。但是之后的话需要顺着链表一个个比较hashcode才能找到我们需要的，时间复杂度取决于链表的长度为O(n)。
     1.8中当链表中的元素超过8个以后，会将链表转换为红黑树，在这些位置进行查找的时候可以降低时间复杂度为O(logN)
 
@@ -60,13 +65,18 @@ JUC 锁分离
     锁消除
 
 
-tomcat优化
+tomcat优化/各个文件夹作用
     conf 存放tomcat的配置 server.xml web.xml
     lib  存放tomcat和application的jar包
     webapps 存放运行tomcat里的application
     bin 存放在windows linux平台的脚本文件
     logs 存放tomcat执行时的日志
     work 存放jsp编译产生的class文件
+tomcat优化/使用compression来提高网页加载速度
+    compression 打开压缩功能 
+    compressionMinSize 启用压缩的输出内容大小，这里面默认为2KB 
+    compressableMimeType 压缩类型 
+    connectionTimeout 定义建立客户连接超时的时间. 如果为 -1, 表示不限制建立客户连接的时间
 
 
 zk+dubbo
@@ -138,12 +148,33 @@ Spring AOP的应用场景
     12.Transactions 事务
 
 SpringMVC的流程
+    1.用户发送请求至前端控制器DispatcherServlet
+    2.DispatcherServlet收到请求调用处理器映射器HandlerMapping。
+    3.处理器映射器根据请求url找到具体的处理器，生成处理器执行链HandlerExecutionChain(包括处理器对象和处理器拦截器)一并返回给DispatcherServlet。
+    4.DispatcherServlet根据处理器Handler获取处理器适配器HandlerAdapter执行HandlerAdapter处理一系列的操作，如：参数封装，数据格式转换，数据验证等操作
+    5.执行处理器Handler(Controller，也叫页面控制器)。
+    6.Handler执行完成返回ModelAndView
+    7.HandlerAdapter将Handler执行结果ModelAndView返回到DispatcherServlet
+    8.DispatcherServlet将ModelAndView传给ViewReslover视图解析器
+    9.ViewReslover解析后返回具体View
+    10.DispatcherServlet对View进行渲染视图（即将模型数据model填充至视图中）。
+    11.DispatcherServlet响应用户。
 
+SpringMVC组件说明
+    1.DispatcherServlet：前端控制器。用户请求到达前端控制器，它就相当于mvc模式中的c，dispatcherServlet是整个流程控制的中心，由它调用其它组件处理用户的请求，dispatcherServlet的存在降低了组件之间的耦合性,系统扩展性提高。由框架实现
+    2.HandlerMapping：处理器映射器。HandlerMapping负责根据用户请求的url找到Handler即处理器，springmvc提供了不同的映射器实现不同的映射方式，根据一定的规则去查找,例如：xml配置方式，实现接口方式，注解方式等。由框架实现
+    3.Handler：处理器。Handler 是继DispatcherServlet前端控制器的后端控制器，在DispatcherServlet的控制下Handler对具体的用户请求进行处理。由于Handler涉及到具体的用户业务请求，所以一般情况需要程序员根据业务需求开发Handler。
+    4.HandlAdapter：处理器适配器。通过HandlerAdapter对处理器进行执行，这是适配器模式的应用，通过扩展适配器可以对更多类型的处理器进行执行。由框架实现。
+    5.ModelAndView是springmvc的封装对象，将model和view封装在一起。
+    6.ViewResolver：视图解析器。ViewResolver负责将处理结果生成View视图，ViewResolver首先根据逻辑视图名解析成物理视图名即具体的页面地址，再生成View视图对象，最后对View进行渲染将处理结果通过页面展示给用户。
+    7View:是springmvc的封装对象，是一个接口, springmvc框架提供了很多的View视图类型，包括：jspview，pdfview,jstlView、freemarkerView、pdfView等。一般情况下需要通过页面标签或页面模版技术将模型数据通过页面展示给用户，需要由程序员根据业务需求开发具体的页面。
 
 Spring的循环依赖
+    
 
 
 MySQL索引 Innodb存储引擎特性 buffer pool页
+    事务并发 事务序列化 以及后来的事务MVCC 事务的特性 隔离级别
 
 Redis MQ Kafka MongoDB
 
@@ -152,3 +183,35 @@ ElasticSearch
 SpringBoot的启动流程
 
 
+关于SQL优化
+    1.首先是分两个方向 一个是硬件方向  另外一个是软件方向
+    2.硬件方面是 就是一些性能的东西 决定性因素在于 网卡IO吞吐量. 比如硬盘 比如现在就有一些用SSD做缓存,用HDD做数据仓库 然后就是内存的数据交换速度 再往上就是CPU的执行速度.
+    3.所以一般在这里的优势是在一定的性能情况,如何把SQL执行效率进行最大化
+    4.然后在目前呢,就是索引的问题,如何充分利用数据库索引.保证查询效率的性能,主要呢就是避免存储引擎放弃使用索引而进行全表扫描
+    5.这样的话会引起查询效率问题.也可能会触发表级锁,行级锁.
+    6.然后就是注意的情况就是避免索引字段设置 为空字段 聚合函数 计算操作 not <> !=  数据类型转换   查询模糊匹配 比如like 字符串%
+    7.然后就是在写操作的 比如经常嵌套多级子查询的 适当的拆成几步 先生成一些临时表  再进行关联操作
+    8.还有就是union all的语句 用union
+    9.where 要尽量避免对索引字段进行计算 就是说 避免使用 in, not in, or 或者having  比如可以用exist 和 not exist 来代替in 和in not in
+    10.可以使用表连接代替exist having用where代替  如果无法代替就分成两步处理
+    11.不要以字符串声明数字,要以数字格式声明字符值  否则会使索引无效 产生全表扫描
+    12.关于排序 避免使用耗费资源的操作  带有DISTINCT,UNION,MINUS,INTERSECT,ORDER BY的SQL语句会启动SQL引擎 执行，耗费资源的排序(SORT)功能. DISTINCT需要一次排序操作, 而其他的至少需要执行两次排序
+    13.再深入一些就是关于表设计方面,一个好的表设计会提高表的性能.也利于后期表的扩展 比如一些字段的配置,分库分表 业务相关的字段频率较多的进行优化
+
+1) 索引的作用？和它的优点缺点是什么？
+答：索引就一种特殊的查询表，数据库的搜索引擎可以利用它加速对数据的检索。 其缺点是它减慢了数据Insert或update的速度，同时也增加了数据库的尺寸大小。
+2) 了解过常见的Web分页查询功能，在后台生成的 SQL 语句是怎样的么? 不同的数据库，分页查询的实现机制是一样的么？
+答：不同的数据库，分页查询的实现机制不一样, MySQL使用 Limit n,m 子句, Oracle使用ROWNUM虚拟列， SqlServer使用 ROW_NUMBER ()函数.
+3) 列举SQL聚合函数: 
+答：SUM、AVG、COUNT、MAX 和 MIN
+4) 分组查询： 知道 having 子句么？ 一般什么时候使用? 
+答：当需要加上过滤条件，过滤条件又是聚集函数那就要使用having
+5) select语句中的子查询： 知道select语句中的查询么？
+答：子查询是用于返回将被用于在主查询作为条件的数据，以进一步限制要检索的数据。
+
+redis存储类型
+    1.String（字符串）
+    2.List（列表）
+    3.Hash（字典）
+    4.Set（集合）
+    5.Sorted Set（有序集合）
