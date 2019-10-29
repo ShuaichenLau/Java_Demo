@@ -181,8 +181,32 @@ Redis MQ Kafka MongoDB
 ElasticSearch
 
 SpringBoot的启动流程
-    1.从入口类的main方法调用SpringApplication的静态方法run，这个run()会构造一个SpringApplication的实例，然后再调用实例的run()方法表示启动SpringBoot。
-    
+    SpringApplication的构造过程
+        1.从入口类的main方法调用SpringApplication的静态方法run，这个run()会构造一个SpringApplication的实例，然后再调用实例的run()方法表示启动SpringBoot。
+        2.SpringApplication构造的时候内部会调用一个private方法initialize。
+        3.ApplicationContextInitializer，应用程序初始化器，做一些初始化的工作。
+        4.ApplicationListener，应用程序事件(ApplicationEvent)监听器。
+            这里应用程序事件有：
+                1.应用程序启动事件(ApplicationStartedEvent)，
+                2.失败事件(ApplicationFailedEvent)，
+                3.准备事件(ApplicationPreparedEvent)等。
+            应用程序事件监听器跟监听事件是绑定的。比如：
+                1.ConfigServerBootstrapApplicationListener只跟ApplicationEnvironmentPreparedEvent事件绑定；
+                2.LiquibaseServiceLocatorApplicationListener只跟ApplicationStartedEvent事件绑定；
+                3.LoggingApplicationListener跟所有事件绑定等等；
+    SpringApplication的运行
+        1.SpringApplicationRunListeners类和SpringApplicationRunListener类
+            SpringApplicationRunListeners内部持有SpringApplicationRunListener集合和1个Log日志类。用于SpringApplicationRunListener监听器的批量执行。
+            SpringApplicationRunListener用于监听SpringApplication的run方法执行
+        2.定义的5个步骤
+            1.started(run方法执行的时候立马执行；对应事件的类型是ApplicationStartedEvent)
+            2.environmentPrepared(ApplicationContext创建之前并且环境信息准备好的时候调用；对应事件的类型是ApplicationEnvironmentPreparedEvent)
+            3.contextPrepared(ApplicationContext创建好并且在source加载之前调用一次；没有具体的对应事件)
+            4.contextLoaded(ApplicationContext创建并加载之后并在refresh之前调用；对应事件的类型是ApplicationPreparedEvent)
+            5.finished(run方法结束之前调用；对应事件的类型是ApplicationReadyEvent或ApplicationFailedEvent)    
+        3.SpringApplicationRunListener目前只有一个实现类EventPublishingRunListener，它把监听的过程封装成了SpringApplicationEvent事件并让内部属性(属性名multicaster)ApplicationEventMulticaster接口的实现类SimpleApplicationEventMulticaster广播出去,广播出去的事件对象会被SpringApplication中的listener事件处理。
+        所以说SpringApplicationRUnListener和ApplicationListener之间的关系是通过ApplicationEventMulticaster广播出去的SpringApplicationEvent所联系起来的。
+        
 
 
 关于SQL优化
