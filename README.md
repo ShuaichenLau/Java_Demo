@@ -181,6 +181,8 @@ Redis MQ Kafka MongoDB
 ElasticSearch
 
 SpringBoot的启动流程
+    1.从入口类的main方法调用SpringApplication的静态方法run，这个run()会构造一个SpringApplication的实例，然后再调用实例的run()方法表示启动SpringBoot。
+    
 
 
 关于SQL优化

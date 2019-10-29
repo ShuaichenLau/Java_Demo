@@ -4,7 +4,7 @@ spring:
     driver-class-name: com.mysql.jdbc.Driver
     druid:
       activiti:
-        url: jdbc:mysql://192.168.100.101:3306/test?allowMultiQueries=true&useUnicode=true&characterEncoding=UTF-8&serverTimezone=Asia/Shanghai
+        url: jdbc:mysql://192.168.216.100:3306/mytest?allowMultiQueries=true&useUnicode=true&characterEncoding=UTF-8&serverTimezone=Asia/Shanghai
         username: root
         password: admin
       initial-size: 10

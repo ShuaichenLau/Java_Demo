@@ -13,6 +13,7 @@
         <module>springboot_hikaricp</module>
         <module>ssm_demo</module>
         <module>java_model_demo</module>
+        <module>bootDemo</module>
     </modules>
 
     <properties>
