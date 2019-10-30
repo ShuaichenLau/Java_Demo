@@ -132,7 +132,7 @@ Spring AOP的核心概念
     8.引入（introduction）：在不修改代码的前提下，引入可以在运行期为类动态地添加一些方法或字段。
 Spring AOP的两种代理方式：
     JDKProxy和Cglin
-        默认的策略是如果目标类是接口，则使用JDK动态代理结束，否则使用Cglib来生成代理。
+        默认的策略是如果目标类是接口，则使用JDK动态代理接口，否则使用Cglib来生成代理。
 Spring AOP的应用场景
     1.Authentication 权限
     2.Caching 缓存
@@ -170,7 +170,15 @@ SpringMVC组件说明
     7View:是springmvc的封装对象，是一个接口, springmvc框架提供了很多的View视图类型，包括：jspview，pdfview,jstlView、freemarkerView、pdfView等。一般情况下需要通过页面标签或页面模版技术将模型数据通过页面展示给用户，需要由程序员根据业务需求开发具体的页面。
 
 Spring的循环依赖
-    
+    Spring对循环依赖的处理有3种
+        1.构造器的循环依赖,这种依赖Spring是处理不了的,直接抛出BeanCurrentlylnCreationExecption异常;
+        2.单例模式的setter循环,通过"三级缓存"处理循环依赖;
+        3.非单例循环,无法处理;
+    Spring单例对象初始化分为3个步骤
+        1.createBeanInstance 实例化,调用对象的构造方法实例化对象;
+        2.populateBean 填充属性,这一步主要是多bean的依赖属性填充;
+        3.initializeBean 调用Spring的init方法;
+    https://juejin.im/post/5c98a7b4f265da60ee12e9b2
 
 
 MySQL索引 Innodb存储引擎特性 buffer pool页
