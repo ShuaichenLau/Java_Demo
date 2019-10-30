@@ -178,6 +178,23 @@ Spring的循环依赖
         1.createBeanInstance 实例化,调用对象的构造方法实例化对象;
         2.populateBean 填充属性,这一步主要是多bean的依赖属性填充;
         3.initializeBean 调用Spring的init方法;
+    构造器循环依赖
+        this.singletonsCurrentlylnCreation.add(beanName)将当前正要创建的bean记录在缓存中,Spring容器将每一个正在创建的bean标识放在一个"当前创建bean池";
+        bean标识:在创建过程中将一直保持在这个池中,因此如果在创建bean的过程中发现自己已经在"当前创建bean池"里时,将抛出BeanCurrentlylnCreationException异常表示循环依赖,而对于创建完毕的bean将从"当前创建bean池"中清除掉。
+    setter循环依赖
+        Spring为了解决单例循环依赖的问题，使用了三级缓存。这三级缓存的作用==>
+        /** Cache of singleton objects: bean name –> bean instance */
+        private final Map singletonObjects = new ConcurrentHashMap(256);
+            完成初始化的单例对象的cache(一级缓存)
+        /** Cache of singleton factories: bean name –> ObjectFactory */
+        private final Map> singletonFactories = new HashMap>(16);
+            进入实例化截断的单例对象工厂的cache(三级缓存)
+        /** Cache of early singleton objects: bean name –> bean instance */
+        private final Map earlySingletonObjects = new HashMap(16);
+            完成实例化但是尚未初始化的,提前曝光的单例对象的cache(二级缓存)
+        我们在创建bean的时候,会首先从cache中获取这个bean,这个缓存就是singletonObjects。
+        Spring解决循环依赖的诀窍就在于SingletonFactories这个三级缓存。这个cache类型就是ObjectFactory。
+        让我们来分析一下“A的某个field或者setter依赖了B的实例对象，同时B的某个field或者setter依赖了A的实例对象”这种循环依赖的情况。A首先完成了初始化的第一步，并且将自己提前曝光到singletonFactories中，此时进行初始化的第二步，发现自己依赖对象B，此时就尝试去get(B)，发现B还没有被create，所以走create流程，B在初始化第一步的时候发现自己依赖了对象A，于是尝试get(A)，尝试一级缓存singletonObjects(肯定没有，因为A还没初始化完全)，尝试二级缓存earlySingletonObjects（也没有），尝试三级缓存singletonFactories，由于A通过ObjectFactory将自己提前曝光了，所以B能够通过ObjectFactory.getObject拿到A对象(虽然A还没有初始化完全，但是总比没有好呀)，B拿到A对象后顺利完成了初始化阶段1、2、3，完全初始化之后将自己放入到一级缓存singletonObjects中。此时返回A中，A此时能拿到B的对象顺利完成自己的初始化阶段2、3，最终A也完成了初始化，进去了一级缓存singletonObjects中，而且更加幸运的是，由于B拿到了A的对象引用，所以B现在hold住的A对象完成了初始化。
     https://juejin.im/post/5c98a7b4f265da60ee12e9b2
 
 
