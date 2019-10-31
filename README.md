@@ -64,19 +64,47 @@ JUC 锁分离
     锁粗化
     锁消除
 
-
-tomcat优化/各个文件夹作用
-    conf 存放tomcat的配置 server.xml web.xml
-    lib  存放tomcat和application的jar包
-    webapps 存放运行tomcat里的application
-    bin 存放在windows linux平台的脚本文件
-    logs 存放tomcat执行时的日志
-    work 存放jsp编译产生的class文件
-tomcat优化/使用compression来提高网页加载速度
-    compression 打开压缩功能 
-    compressionMinSize 启用压缩的输出内容大小，这里面默认为2KB 
-    compressableMimeType 压缩类型 
-    connectionTimeout 定义建立客户连接超时的时间. 如果为 -1, 表示不限制建立客户连接的时间
+关于tomcat优化总描述
+    1.tomcat优化/各个文件夹作用
+        conf 存放tomcat的配置 server.xml web.xml
+        lib  存放tomcat和application的jar包
+        webapps 存放运行tomcat里的application
+        bin 存放在windows linux平台的脚本文件
+        logs 存放tomcat执行时的日志
+        work 存放jsp编译产生的class文件
+    2.tomcat优化/使用compression来提高网页加载速度
+        compression 打开压缩功能 
+        compressionMinSize 启用压缩的输出内容大小，这里面默认为2KB 
+        compressableMimeType 压缩类型 
+        connectionTimeout 定义建立客户连接超时的时间. 如果为 -1, 表示不限制建立客户连接的时间
+    3.tomcat的3种运行方式:
+        BIO:默认的模式,同步阻塞模式,性能非常低下,没有经过任何优化处理和支持
+        NIO:(new i/o)同步非阻塞模式,利用多路复用器来提高性能,Java nio是一个基于缓冲区、并能提供非阻塞I/O操作的Java API，因此nio也被看成是non-blocking I/O的缩写。它拥有比传统I/O操作(bio)更好的并发运行性能。
+        APR:从操作系统级别来解决异步的IO问题,大幅度提高性能。
+    4.tomcat执行器优化(使用线程池)
+        在tomcat中每一个用户的请求都是一个线程,所以可以使用线程池来提高性能。开启并且使用配置：在Connector中指定使用共享线程池
+        **Executor标签重要参数说明：**
+            name：共享线程池的名字。这是Connector为了共享线程池要引用的名字，该名字必须唯一。默认值：None；
+            namePrefix:在JVM上，每个运行线程都可以有一个name 字符串。这一属性为线程池中每个线程的name字符串设置了一个前缀，Tomcat将把线程号追加到这一前缀的后面。默认值：tomcat-exec-；
+            maxThreads：该线程池可以容纳的最大线程数。默认值：200；
+            maxIdleTime：在Tomcat关闭一个空闲线程之前，允许空闲线程持续的时间(以毫秒为单位)。只有当前活跃的线程数大于minSpareThread的值，才会关闭空闲线程。默认值：60000(一分钟)。
+            threadPriority：线程的等级。默认是Thread.NORM_PRIORITY
+        **Connector重要参数说明：**
+            executor：表示使用该参数值对应的线程池；
+            minProcessors：服务器启动时创建的处理请求的线程数；
+            maxProcessors：最大可以创建的处理请求的线程数；
+            maxThreads： Tomcat使用线程来处理接收的每个请求。这个值表示Tomcat可创建的最大的线程数。默认值150。
+            acceptCount： 指定当所有可以使用的处理请求的线程数都被使用时，可以放到处理队列中的请求数，超过这个数的请求将不予处理。默认值10。
+            minSpareThreads： Tomcat初始化时创建的线程数。默认值25。
+            maxSpareThreads： 一旦创建的线程超过这个值，Tomcat就会关闭不再需要的socket线程。默认值75。
+            enableLookups： 是否反查域名，默认值为true。为了提高处理能力，应设置为false
+            connnectionTimeout： 网络连接超时，默认值60000，单位：毫秒。设置为0表示永不超时，这样设置有隐患的。通常可设置为30000毫秒。
+            maxKeepAliveRequests： 保持请求数量，默认值100。 bufferSize： 输入流缓冲大小，默认值2048 bytes。
+            compression： 压缩传输，取值on/off/force，默认值off。 其中和最大连接数相关的参数为maxThreads和acceptCount。如果要加大并发连接数，应同时加大这两个参数。
+    5.tomcat禁用AJP连接器(在一般项目中使用Nginx+tomcat的架构)
+        AJP（Apache JServer Protocol）
+        AJPv13协议是面向包的。WEB服务器和Servlet容器通过TCP连接来交互；为了节省SOCKET创建的昂贵代价，WEB服务器会尝试维护一个永久TCP连接到servlet容器，并且在多个请求和响应周期过程会重用连接。
+    6.JVM的优化
 
 
 zk+dubbo
