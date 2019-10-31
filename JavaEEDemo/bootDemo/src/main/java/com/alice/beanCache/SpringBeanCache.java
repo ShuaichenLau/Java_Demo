@@ -1,4 +1,4 @@
-package com.alice.controller.beanCache;
+package com.alice.beanCache;
 
 import org.springframework.util.Assert;
 
