@@ -108,8 +108,6 @@ JUC 锁分离
     6.JVM的优化
 
 
-zk+dubbo
-
 SpringBoot+SpringCloud
     快速整合第三方框架,简化XML配置完全采用注解化,内置Web服务器(jetty tomcat),帮助开发者完成快速开发。最终用Java应用程序的形式进行执行
     传统SSH SSM有些许缺点:比如要写很多xml配置文件,开发效率低,jar包冲突
@@ -295,3 +293,10 @@ redis存储类型
     3.Hash（字典）
     4.Set（集合）
     5.Sorted Set（有序集合）
+
+dubbo需要涉及到哪些技术?
+	1.使用zk实现服务注册中心
+	2.使用Netty实现Dubbo的客户端与服务端
+	3.需要优化代码性能设计到多线程和设计模式
+	4.传递对象需要设计序列化和反序列化
+	5.Java反射和自定义注解技术
