@@ -17,4 +17,8 @@ public class Student implements Serializable {
 
     private Timestamp date;
 
+    @Override
+    protected Object clone() throws CloneNotSupportedException {
+        return (Student)super.clone();
+    }
 }
