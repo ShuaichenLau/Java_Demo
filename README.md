@@ -124,11 +124,10 @@ SpringCloud解决方案:
     8.断路器
 SpringBoot和SpringCloud之间的关系
     SpringCloud是一套微服务解决框架，在微服务领域通讯协议http+json格式
-    SpringCloud依赖于SpringBoot框架,SpringCloud使用SpringMVC书写http协议接口.
+    SpringCloud依赖于SpringBoot框架,SpringCloud使用SpringMVC书写http协议接口.同时SpringCloud是一套完整的微服务解决框架
 
 SpringBoot与SpringMVC的关系
-    SpringBoot集成了SpringMVC web组件(集成关系)
-    整合SpringMVC框架
+    SpringBoot集成了SpringMVC web组件(集成关系) 整合SpringMVC框架
 
 互联网项目:敏捷开发 分布式和微服务项目，rpc通讯协议接口都是http+json格式=rest格式
 如果做微服务,需要SpringCloud整合SpringBoot,如果项目只是单纯使用SpringBoot不使用SpringCloud,这个项目不需要微服务.
