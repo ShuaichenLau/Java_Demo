@@ -227,7 +227,18 @@ Spring的循环依赖
 MySQL索引 Innodb存储引擎特性 buffer pool页
     事务并发 事务序列化 以及后来的事务MVCC 事务的特性 隔离级别
 
-Redis MQ Kafka MongoDB
+Redis RabbbitMQ Kafka MongoDB
+
+rabbitMQ 高级消息队列协议.用于在分布式系统中存储转发消息,在易用性/扩展性/高可用性等方面表现不俗.比如rabbitMQ的一些特性:
+    1.可靠性,RabbitMQ使用一些机制来保证可靠性,如持久化,传输确认,发布确认.
+    2.灵活的路由:在消息队列之前,使用Exchange来路由消息.对于典型的路由功能,RabbitMQ已经提供了一些内置Exchange来实现.针对更复杂的路由功能,可以将多个Exchange绑定在一起,也通过插件机制实现自己的Exchange.
+    3.消息集群:多个rabbitMQ可以组成集群,形成一个逻辑Broker.
+    4.高可用:队列可以在集群中的机器进行镜像,使得在部分节点出问题的情况下仍然可用.
+    5.多种协议:rabbitMQ支持多种消息队列协议,比如STOMP MQTT
+    6.多语言客户端:支持Java .Net Ruby等等.
+    7.管理界面:提供易用的管理界面,使得用户可以监控和管理消息Broker
+    8.跟踪机制:如果消息发生异常,rabbitMQ提供消息跟踪机制,使用者可以发生了什么.
+    9.插件机制:rabbitMQ提供了许多插件,来从多方面进行扩展,也可以编写自己的插件.
 
 ElasticSearch
 
@@ -257,8 +268,6 @@ SpringBoot的启动流程
             5.finished(run方法结束之前调用；对应事件的类型是ApplicationReadyEvent或ApplicationFailedEvent)    
         3.SpringApplicationRunListener目前只有一个实现类EventPublishingRunListener，它把监听的过程封装成了SpringApplicationEvent事件并让内部属性(属性名multicaster)ApplicationEventMulticaster接口的实现类SimpleApplicationEventMulticaster广播出去,广播出去的事件对象会被SpringApplication中的listener事件处理。
         所以说SpringApplicationRUnListener和ApplicationListener之间的关系是通过ApplicationEventMulticaster广播出去的SpringApplicationEvent所联系起来的。
-        
-
 
 关于SQL优化
     1.首先是分两个方向 一个是硬件方向  另外一个是软件方向
