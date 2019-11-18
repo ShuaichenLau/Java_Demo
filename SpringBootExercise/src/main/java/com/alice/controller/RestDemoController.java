@@ -2,6 +2,7 @@ package com.alice.controller;
 
 import com.google.common.collect.Lists;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.context.annotation.Scope;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -28,6 +29,7 @@ public class RestDemoController {
         return "index";
     }
 
+    @Scope("request")
     @RequestMapping("/getList")
     public List getArraylist(){
         log.info("com.alice.controller.RestDemoController.getArraylist");
