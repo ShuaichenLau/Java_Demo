@@ -12,6 +12,8 @@ import java.util.*;
 @Slf4j
 public class RestDemoController {
 
+    private int xCount = 0;
+
     @RequestMapping("/getMember")
     public Map<String,Object> getMember(){
 
@@ -36,6 +38,15 @@ public class RestDemoController {
         ArrayList<String> stringList = Lists.newArrayList();
         for (int i = 0; i < 10; i++) {
             stringList.add(UUID.randomUUID().toString().replaceAll("-",""));
+        }
+
+        xCount += 100;
+        stringList.add(String.valueOf(xCount));
+
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
         }
         return stringList;
     }

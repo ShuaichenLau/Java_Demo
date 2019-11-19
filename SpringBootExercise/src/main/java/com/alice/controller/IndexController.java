@@ -5,6 +5,7 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.Calendar;
 import java.util.Date;
 
 /**
@@ -17,6 +18,11 @@ public class IndexController {
 
     @RequestMapping("/indexDemo")
     public String indexController(){
-        return new Date().toString();
+        log.info("com.alice.controller.IndexController.indexController");
+
+        Calendar calendar = Calendar.getInstance();
+
+        return calendar.getTime().toString();
+//        return new Date().toString();
     }
 }
