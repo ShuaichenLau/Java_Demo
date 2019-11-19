@@ -2,6 +2,7 @@ package com.alice.hikaricp.controller;
 
 import com.alice.hikaricp.entity.Person;
 import com.alice.hikaricp.service.IUserService;
+import lombok.extern.slf4j.Slf4j;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;

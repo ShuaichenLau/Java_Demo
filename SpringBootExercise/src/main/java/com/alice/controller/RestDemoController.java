@@ -2,6 +2,8 @@ package com.alice.controller;
 
 import com.google.common.collect.Lists;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.springframework.context.annotation.Scope;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -11,6 +13,7 @@ import java.util.*;
 @RestController
 @Slf4j
 public class RestDemoController {
+//    private final static Log log = LogFactory.getLog(RestController.class);
 
     private int xCount = 0;
 
@@ -28,6 +31,7 @@ public class RestDemoController {
     public String index(){
         log.info("com.alice.controller.RestDemoController.index");
 
+        System.gc();
         return "index";
     }
 
