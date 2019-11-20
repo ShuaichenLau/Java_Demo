@@ -26,16 +26,17 @@ public class StudentImpl implements IStudent {
     @Override
     public PageInfo<Student> findAll(int pageIndex, int pageSize) {
         logger.info("com.alice.service.impl.StudentImpl.findAll");
-        List<Student> studentlist = Lists.newArrayList();
         PageHelper.startPage(pageIndex,pageSize);
-        studentlist = studentMapper.findAll();
-        PageInfo<Student> studentPageInfo = new PageInfo<Student>(studentlist);
+        PageInfo<Student> studentPageInfo = new PageInfo<Student>(studentMapper.findAll());
         return studentPageInfo;
     }
 
     @Override
     public int insertStudent(Student student) {
+        logger.info("com.alice.service.impl.StudentImpl.insertStudent");
         int insertCount = studentMapper.insert(student.getName(), student.getAge(), student.getAddress());
         return insertCount;
     }
+
+
 }
