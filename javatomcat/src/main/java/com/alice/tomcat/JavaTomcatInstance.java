@@ -11,10 +11,12 @@ import org.springframework.core.env.SystemEnvironmentPropertySource;
  * Tomcat底层执行 Servlet程序
  * SpringMVC底层使用Servlet包装
  *
+ * 以注解的方式启动SpringMVC
+ *
  * @author scliuk
  * 2019-11-21 00:28:09
  */
-public class Test001 {
+public class JavaTomcatInstance {
 
     private final static int port = 9098;
     private final static String path = "/demo";
