@@ -14,7 +14,7 @@ public class Person implements Serializable {
 	private String address;
 	private int age;
 
-	private static Person getPerson() {
+	public static Person getPerson() {
 		return new Person();
 	}
 
