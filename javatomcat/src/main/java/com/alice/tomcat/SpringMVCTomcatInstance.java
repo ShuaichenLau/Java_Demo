@@ -1,6 +1,5 @@
 package com.alice.tomcat;
 
-import com.alice.servlet.IndexServlet;
 import org.apache.catalina.LifecycleException;
 import org.apache.catalina.WebResourceRoot;
 import org.apache.catalina.core.StandardContext;

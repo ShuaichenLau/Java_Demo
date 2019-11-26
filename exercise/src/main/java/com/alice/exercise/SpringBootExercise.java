@@ -13,6 +13,8 @@ import cn.hutool.core.convert.Convert;
 
 /**
  * Hello world!
+ * @author scliuk
+ * 2019-11-26 10:01:09
  *
  */
 @ComponentScan(basePackages = "com.alice")
