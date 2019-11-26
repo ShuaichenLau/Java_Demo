@@ -2,6 +2,10 @@ package com.alice.exercise.main;
 
 import java.util.concurrent.atomic.AtomicInteger;
 
+/**
+ * 深入理解JVM 代码清单12-1 volatile的运算
+ * 2019-11-26 20:13:40
+ */
 public class Test01 {
 
     public static volatile int race = 0;
