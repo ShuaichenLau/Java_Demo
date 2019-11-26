@@ -1,2 +1,2 @@
 server:
-  port: 9098
+  port: 9098  servlet:    context-path: "/exercise"

@@ -1,5 +1,7 @@
 package com.alice.controller;
 
+import cn.hutool.core.convert.Convert;
+import cn.hutool.core.date.DateUtil;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -13,6 +15,7 @@ public class IndexController {
 
     @RequestMapping(value = "/index", produces = "text/html;charset=UTF-8")
     public String index(){
-        return "纯手写SpringBoot ...." + Calendar.getInstance().getTime().toString();
+        String now = DateUtil.now();
+        return "纯手写SpringBoot ...." + Convert.toDate(now);
     }
 }
