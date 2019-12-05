@@ -25,6 +25,9 @@ import cn.hutool.core.convert.Convert;
 public class SpringBootExercise {
 	public static void main(String[] args) {
 		SpringApplication.run(SpringBootExercise.class, args);
+
+		System.gc();
+		Runtime.getRuntime().gc();
 		
 	}
 }
