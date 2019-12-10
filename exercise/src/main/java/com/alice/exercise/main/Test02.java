@@ -1,5 +1,7 @@
 package com.alice.exercise.main;
 
+import com.alice.exercise.entity.ThreadEntity;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Vector;
@@ -24,7 +26,13 @@ public class Test02 {
 
     public static void main(String[] args) {
 
-        new BeanError();
+//        new BeanError();
+
+//        for (int i = 0; i < 100000; i++) {
+//            new Thread(new ThreadEntity()).start();
+//        }
+
+
 
 
     }
@@ -41,15 +49,4 @@ public class Test02 {
         add();
     }
 
-}
-
-/**
- * 死递归
- * java.lang.StackOverflowError
- */
-class BeanError{
-    public BeanError(){
-        new BeanError();
-        System.out.println("aa");
-    }
 }
