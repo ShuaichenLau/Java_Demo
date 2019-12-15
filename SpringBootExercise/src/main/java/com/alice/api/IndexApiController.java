@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.TimeUnit;
 
 @RestController
 public class IndexApiController {
@@ -31,6 +32,14 @@ public class IndexApiController {
 
         double acquire = rateLimiter.acquire();
         System.out.println("从桶中获取令牌等待的时间是 == > " + acquire);
+
+        boolean b1 = rateLimiter.tryAcquire(500, TimeUnit.MILLISECONDS);
+
+        if(!b1){
+            result.put("msg","请稍后再来试试!!!");
+            result.put("acquire",acquire);
+            return result;
+        }
 
         boolean b = orderService.addOrder();
 
