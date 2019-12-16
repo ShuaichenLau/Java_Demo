@@ -1,14 +1,15 @@
-package com.alice.api;
+package com.alice.annotation;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
-@Target(value = ElementType.METHOD)
+
+@Target({ElementType.METHOD})
 @Retention(RetentionPolicy.RUNTIME)
 public @interface ExtRateLimiter {
 
-    double value();
+    double permitsPerSecond();
     long timeout();
 }

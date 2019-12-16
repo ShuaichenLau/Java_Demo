@@ -1,5 +1,6 @@
 package com.alice.api;
 
+import com.alice.annotation.ExtRateLimiter;
 import com.alice.service.OrderService;
 import com.google.common.collect.Maps;
 import com.google.common.util.concurrent.RateLimiter;
@@ -40,9 +41,9 @@ public class IndexApiController {
 
         boolean b1 = rateLimiter.tryAcquire(500, TimeUnit.MILLISECONDS);
 
-        if(!b1){
-            result.put("msg","请稍后再来试试!!!");
-            result.put("acquire",acquire);
+        if (!b1) {
+            result.put("msg", "请稍后再来试试!!!");
+            result.put("acquire", acquire);
             return result;
         }
 
@@ -51,8 +52,8 @@ public class IndexApiController {
         if (b) {
             System.out.println("恭喜你 抢购成功!!!");
 
-            result.put("msg","恭喜你 抢购成功!!!");
-            result.put("acquire",acquire);
+            result.put("msg", "恭喜你 抢购成功!!!");
+            result.put("acquire", acquire);
             return result;
         }
         return result;
@@ -60,8 +61,8 @@ public class IndexApiController {
 
 
     @RequestMapping("/selectOrder")
-    @ExtRateLimiter(value = 10,timeout = 500)
-    public Map selectOrder(){
+    @ExtRateLimiter(permitsPerSecond = 10, timeout = 500)
+    public Map selectOrder() {
         HashMap<String, Object> result = Maps.newHashMap();
 
         result.put("time", Calendar.getInstance().getTime().toString());
