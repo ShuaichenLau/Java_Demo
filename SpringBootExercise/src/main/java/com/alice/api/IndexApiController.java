@@ -1,19 +1,24 @@
 package com.alice.api;
 
-import ch.qos.logback.core.net.SyslogOutputStream;
 import com.alice.service.OrderService;
 import com.google.common.collect.Maps;
 import com.google.common.util.concurrent.RateLimiter;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.UUID;
 import java.util.concurrent.TimeUnit;
 
 @RestController
 public class IndexApiController {
+
+    private final Logger logger = LoggerFactory.getLogger(IndexApiController.class);
 
     @Autowired
     private OrderService orderService;
@@ -27,7 +32,7 @@ public class IndexApiController {
         // 1.限流处理 限流正常要放在网关 客户端从桶中获取对应的令牌 为什么返回double结果
         // 结果表示 从桶中拿到令牌等待时间
 
-        // 2.如果获取不到令牌 就会一直等待
+        // 2.如果获取不到令牌 就会一直等待. 设置服务降级处理 (相当于配置在规定时间内如果没有获取到令牌的话,直接走服务降级)
         HashMap<String, Object> result = Maps.newHashMap();
 
         double acquire = rateLimiter.acquire();
@@ -50,6 +55,18 @@ public class IndexApiController {
             result.put("acquire",acquire);
             return result;
         }
+        return result;
+    }
+
+
+    @RequestMapping("/selectOrder")
+    @ExtRateLimiter(value = 10,timeout = 500)
+    public Map selectOrder(){
+        HashMap<String, Object> result = Maps.newHashMap();
+
+        result.put("time", Calendar.getInstance().getTime().toString());
+        result.put("uuid", UUID.randomUUID().toString());
+
         return result;
     }
 
