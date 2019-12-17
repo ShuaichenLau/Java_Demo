@@ -110,7 +110,11 @@
             <groupId>org.aspectj</groupId>
             <artifactId>aspectjrt</artifactId>
         </dependency>
-
+        <!-- springboot 整合AOP -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-aop</artifactId>
+        </dependency>
 
         <!--<dependency>-->
         <!--<groupId>org.mybatis.spring.boot</groupId>-->

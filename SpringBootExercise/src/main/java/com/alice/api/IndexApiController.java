@@ -60,8 +60,12 @@ public class IndexApiController {
     }
 
 
+    /**
+     * 以每秒添加1个令牌到令牌桶中
+     * @return
+     */
     @RequestMapping("/selectOrder")
-    @ExtRateLimiter(permitsPerSecond = 10, timeout = 500)
+    @ExtRateLimiter(permitsPerSecond = 1.0, timeout = 100)
     public Map selectOrder() {
         HashMap<String, Object> result = Maps.newHashMap();
 

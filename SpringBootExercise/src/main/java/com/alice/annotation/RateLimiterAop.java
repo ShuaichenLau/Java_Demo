@@ -2,16 +2,24 @@ package com.alice.annotation;
 
 import com.google.common.util.concurrent.RateLimiter;
 import org.aspectj.lang.ProceedingJoinPoint;
-import org.aspectj.lang.Signature;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Pointcut;
 import org.aspectj.lang.reflect.MethodSignature;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
+import org.springframework.web.context.request.RequestContextHolder;
+import org.springframework.web.context.request.ServletRequestAttributes;
 
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.lang.reflect.Method;
+import java.util.Calendar;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.TimeUnit;
 
 /**
  * 2019年12月16日22:55:50
@@ -31,7 +39,9 @@ import java.util.concurrent.ConcurrentHashMap;
 @Component
 public class RateLimiterAop {
 
-    private Map<String,RateLimiter> rateHashMap = new ConcurrentHashMap<String,RateLimiter>();
+    private final Logger logger = LoggerFactory.getLogger(RateLimiterAop.class);
+
+    private Map<String, RateLimiter> rateHashMap = new ConcurrentHashMap<String, RateLimiter>();
 
     //定义切入点 com.alice.api
     @Pointcut("execution(public * com.alice.api.*.*(..))")
@@ -56,16 +66,46 @@ public class RateLimiterAop {
             return null;
         }
         ExtRateLimiter extRateLimiter = singatureMethod.getDeclaredAnnotation(ExtRateLimiter.class);
-        if (extRateLimiter == null){
+        if (extRateLimiter == null) {
             return proceedingJoinPoint.proceed();
         }
         double permitsPerSecond = extRateLimiter.permitsPerSecond();
         long timeout = extRateLimiter.timeout();
 
 
+        ServletRequestAttributes requestAttributes = (ServletRequestAttributes) RequestContextHolder.getRequestAttributes();
+        String requestURI = requestAttributes.getRequest().getRequestURI();
+        RateLimiter rateLimiter = null;
+        if (rateHashMap.containsKey(requestURI)) {
+            rateLimiter = rateHashMap.get(requestURI);
+        } else {
+            rateLimiter = RateLimiter.create(permitsPerSecond);
+            rateHashMap.put(requestURI, rateLimiter);
+        }
 
+        boolean tryAcquire = rateLimiter.tryAcquire(timeout, TimeUnit.MILLISECONDS);
+        if (!tryAcquire) {
+            fallback();
+            return null;
+        }
 
-        return null;
+        return proceedingJoinPoint.proceed();
+    }
+
+    private void fallback() {
+        logger.info("fallback...");
+        ServletRequestAttributes requestAttributes = (ServletRequestAttributes) RequestContextHolder.getRequestAttributes();
+        HttpServletResponse response = requestAttributes.getResponse();
+        response.setHeader("Content-type", "text/html;charset=UTF-8");
+        PrintWriter writer = null;
+        try {
+            writer = response.getWriter();
+            writer.println("fallback  " + Calendar.getInstance().getTime().toString());
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            writer.close();
+        }
     }
 
     /**
@@ -79,5 +119,6 @@ public class RateLimiterAop {
         Method method = signature.getMethod();
         return method;
     }
+
 
 }
