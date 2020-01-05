@@ -91,3 +91,21 @@ API接口与RPC远程http协议
 API幂等性产生的原因:(接口重复提交的问题) 保证接口唯一性 使用token(令牌)保证临时且唯一(15分钟-120分钟)
 分布式session解决方案 使用redis+token
 token如何生成 token_时间戳(雪花算法ID)  分布式场景问题
+
+如何保证外网开放接口的安全性
+    1.搭建API网关控制接口访问权限
+    2.开放平台设计oauth2.0协议(安全认证) QQ认证 第三方联合登录
+    3.采用https加密传输协议(使用Nginx配置Https)
+    4.API接口数字签名(移动的接口)非对称加密RSA 防止抓包分析修改数据
+    5.基于令牌方式实现API接口调用.基于accessToken实现API调用(微信开发)
+
+基于AccessToken方式实现开放平台
+    开放平台提供者:需要提供为每个合作机构提供对应的AppID AppSecret
+        需要AppId+AppSecret生成对应的accessToken
+    1.需求:A需要调用B的服务器(B需要提供开放外网访问接口)
+    2.基于令牌方式实现
+    AppId (第三方合作机构) 区分不同的机构 永远不能改变
+    AppSecret 在传输中实现加密功能(密钥) 可以发生改变
+获取AccessToken 开发步骤
+    使用对应机构的 AppId + AppSecret 对应生成AccessToken
+    使用对应的AccessToken调用第三方接口

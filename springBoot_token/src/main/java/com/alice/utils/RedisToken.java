@@ -16,6 +16,9 @@ public class RedisToken {
 
     private static final Long TIMEOUT = 60 * 60L;
 
+    public static String getAccessToken(){
+        return UUID.randomUUID().toString().replaceAll("-","");
+    }
 
     public String getToken() {
         // 生成token 规则保证 临时且唯一 不支持分布式场景 分布式全局ID生成规则
