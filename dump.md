@@ -83,7 +83,6 @@ SpringMVC线程单例 非线程安全
     必须要定义一个非静态成员变量时候，则通过注解@Scope(“prototype”)，将其设置为多例模式
 
 
-
 redis持久化
 RDB AOF同步的区别
     1.RDB属于全量同步(定时同步)

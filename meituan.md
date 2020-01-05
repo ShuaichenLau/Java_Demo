@@ -4,11 +4,11 @@ ArrayList 和 Vector 的区别。
 
 快速失败 (fail-fast) 和安全失败 (fail-safe) 的区别是什么？
 
-hashmap 的数据结构。
+hashMap 的数据结构。
 
-HashMap 的工作原理是什么?
+hashMap 的工作原理是什么?
 
-Hashmap 什么时候进行扩容呢？
+hashMap 什么时候进行扩容呢？
 
 List、Map、Set 三个接口，存取元素时，各有什么特点？
 
