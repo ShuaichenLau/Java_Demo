@@ -109,3 +109,4 @@ token如何生成 token_时间戳(雪花算法ID)  分布式场景问题
 获取AccessToken 开发步骤
     使用对应机构的 AppId + AppSecret 对应生成AccessToken
     使用对应的AccessToken调用第三方接口
+    写一个定时Job 每间隔1小时刷新AccessToken
