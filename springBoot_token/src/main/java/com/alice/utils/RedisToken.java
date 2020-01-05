@@ -36,7 +36,7 @@ public class RedisToken {
      */
 
     public boolean findToken(String token) {
-        if (token == null) {
+        if (StringUtils.isEmpty(token)) {
             return false;
         }
 
