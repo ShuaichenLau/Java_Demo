@@ -33,7 +33,6 @@ public class AccessTokenInterceptor extends BaseApiService implements HandlerInt
 	 * @return
 	 * @throws Exception
 	 */
-
 	public boolean preHandle(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, Object o)
 			throws Exception {
 		System.out.println("---------------------开始进入请求地址拦截----------------------------");
