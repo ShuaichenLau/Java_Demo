@@ -260,40 +260,47 @@ JVM与调优21题
 
 并发编程28题
 
-Synchronized 用过吗，其原理是什么？
+22.Synchronized 用过吗，其原理是什么？
+    Synchronized有3种作用:
+        a.确保线程互斥访问同步代码
+        b.保证共享变量的修改能够及时可见
+        c.有效解决重排序问题
+    3种用法:
+        a.修饰普通方法
+        b.修饰静态方法
+        c.修饰代码块
 
-你刚才提到获取对象的锁，这个“锁”到底是什么？如何确定对象的锁？
+23.你刚才提到获取对象的锁，这个“锁”到底是什么？如何确定对象的锁？
 
-什么是可重入性，为什么说 Synchronized 是可重入锁？
+24.什么是可重入性，为什么说 Synchronized 是可重入锁？
 
-JVM 对 Java 的原生锁做了哪些优化？
+25.JVM 对 Java 的原生锁做了哪些优化？
 
-为什么说 Synchronized 是非公平锁？
+26.为什么说 Synchronized 是非公平锁？
 
-什么是锁消除和锁粗化？
+27.什么是锁消除和锁粗化？
 
-为什么说 Synchronized 是一个悲观锁？乐观锁的实现原理又是什么？什么是 CAS，它有什么特性？
+28.为什么说 Synchronized 是一个悲观锁？乐观锁的实现原理又是什么？什么是 CAS，它有什么特性？
 
-乐观锁一定就是好的吗？
+29.乐观锁一定就是好的吗？
 
-跟 Synchronized 相比，可重入锁 ReentrantLock 其实现原理有什么不同？
+30.跟 Synchronized 相比，可重入锁 ReentrantLock 其实现原理有什么不同？
 
-那么请谈谈 AQS 框架是怎么回事儿？
+31.那么请谈谈 AQS 框架是怎么回事儿？
 
-请尽可能详尽地对比下 Synchronized 和 ReentrantLock 的异同。
+32.请尽可能详尽地对比下 Synchronized 和 ReentrantLock 的异同。
 
-ReentrantLock 是如何实现可重入性的？
+33.ReentrantLock 是如何实现可重入性的？
 
-除了 ReetrantLock，你还接触过 JUC 中的哪些并发工具？
+34.除了 ReetrantLock，你还接触过 JUC 中的哪些并发工具？
 
-请谈谈 ReadWriteLock 和 StampedLock。
+35.请谈谈 ReadWriteLock 和 StampedLock。
 
-如何让 Java 的线程彼此同步？你了解过哪些同步器？请分别介绍下。
+36.如何让 Java 的线程彼此同步？你了解过哪些同步器？请分别介绍下。
 
-CyclicBarrier 和 CountDownLatch 看起来很相似，请对比下呢？
+37.CyclicBarrier 和 CountDownLatch 看起来很相似，请对比下呢？
 
 Java 线程池相关问题
-
 Java 中的线程池是如何实现的？
 
 创建线程池的几个核心构造参数？
