@@ -290,6 +290,8 @@ Synchronized 用过吗，其原理是什么？
 
 28.为什么说 Synchronized 是一个悲观锁？乐观锁的实现原理又是什么？什么是 CAS，它有什么特性？
 
+    cas自旋锁
+
 29.乐观锁一定就是好的吗？
 
 30.跟 Synchronized 相比，可重入锁 ReentrantLock 其实现原理有什么不同？
@@ -504,14 +506,25 @@ Redis 16题
 
 redis有哪些模式?
 
-什么是redis?
-
-Reids的特点
+什么是redis?Reids的特点
+    redis是一个高性能的key-value数据库.
+    redis支持数据持久化,可以将内存中数据保存到磁盘中,重启的时候可以再次加载使用
+    redis支持key-value形式的数据库,同时还提供list,set,hash,zset,String等数据类型
+    redis支持数据备份,即master-slave模式的数据备份
+    redis的所有操作都是原子性的,意思是要么执行成功,要么失败完全不执行.单个操作是原子性.多个操作也支持事务,即原子性.多个操作也支持事务,即原子性.通过MULTI和EXEC指令包起来.
+    redis支持publish/subscribe,通知key过期等等特性.
 
 Redis支持的数据类型
+    list,set,hash,zset,String等数据类型
 
 Redis是单进程单线程的
-
+    完全基于内存操作,数据存在内存中类似于hashMap,hashMap的优势就是查找和操作的时间复杂度都是O(1).
+    采用单线程避免不必要的上下文切换和多线程资源竞争.
+    使用多路I/O复用,非阻塞IO
+    使用底层模型不同,它们之间底层实现方式以及客户端之间的通信应用协议不一样,redis直接自己构建了VM机制.
+    
+    但是使用单线程无法发挥多核CPU的性能,但是可以通过在单机环境搭建多个redis实例来完善.
+    
 虚拟内存
 
 Redis锁
