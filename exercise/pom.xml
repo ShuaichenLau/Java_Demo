@@ -67,6 +67,27 @@
 			<artifactId>hutool-all</artifactId>
 			<version>5.0.6</version>
 		</dependency>
+
+		<!-- mysql 依赖 -->
+		<dependency>
+			<groupId>mysql</groupId>
+			<artifactId>mysql-connector-java</artifactId>
+		</dependency>
+
+		<!--开启 cache 缓存 -->
+		<!--<dependency>-->
+			<!--<groupId>org.springframework.boot</groupId>-->
+			<!--<artifactId>spring-boot-starter-cache</artifactId>-->
+		<!--</dependency>-->
+		<!-- ehcache缓存 -->
+
+		<!--开启redis缓存-->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-data-redis</artifactId>
+		</dependency>
+
+
 	</dependencies>
 
 	<build>
