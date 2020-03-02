@@ -385,7 +385,7 @@ redis穿透原理
     h.消息中间件集群管理(zookeeper)
 
 注册中心都是集群版本 consul eureka zookeeper redis高可用
-分布式系统核心在于服务治理
+分布式系统核心在于服务治理 
 
 1.zookeeper存储结构
     xml是怎么样的数据结构? 类似于树Node节点的结构
@@ -400,5 +400,41 @@ redis穿透原理
     会员服务项目启动的时候回在zk上创建一个临时节点 节点名称itmayiedu_member对应的value:127.0.0.1:8080,127.0.0.1:8081
     订单直接在zk使用itmayiedu_member查询下面所有子节点,获取子节点后,本地在使用负载均衡算法实现调用
 
+将服务注册到zookeeper上
+    1.建立zk连接
+    2.先创建父节点
+        如果父节点不存在,直接创建父节点
+    3.创建子节点(临时)
+
+客户端从zk服务器端获取节点信息
+    1.建立zk节点
+    2.读取注册父节点信息
+    
+如何使用zookeeper实现分布式锁?思路?
+    zookeeper实现分布式锁 使用临时节点实现.
+实现步骤:多个JVM同时在zookeeper上创建同一个相同的节点(/lock),因为zookeeper节点是唯一的,
+    如果是唯一的话,那么同时如果有多个客户端创建相同的节点/lock的话,最终只有看谁快速抢夺资源,谁就能创建/lock节点
+    这个时候节点类型应该使用临时类型.
+
+zookeeper如何获取锁?
+zookeeper如何释放锁?
+    使用watcher(事件通知)获取/lock已经被删除
+zk连接不要强制关闭,会产生延迟.直接调用close(),产生延迟的概率非常小.
+如果程序一直不处理完,可能导致死锁?可以设置有效期.可以看60秒session超时
+rpc重试 一般重试3次
+
+
 Nginx策略
     轮询 权重 随机 ip URL
+
+并行（Parallel）：指多条垃圾收集线程并行工作，但此时用户线程仍然处于等待状态。
+并发（Concurrent）：指用户线程与垃圾收集线程同时执行（但不一定是并行的，可能会交替执行），用户程序在继续运行。而垃圾收集程序运行在另一个CPU上。
+
+
+Servlet 生命周期就是指创建 Servlet 实例后响应客户请求直至销毁的全过程.
+Serlvet 生命周期的三个方法:init()–>service()–>destroy()，
+Servlet生命周期的各个阶段: 实例化:Servlet 容器创建
+Servlet 类的实例对象
+初始化:Servlet 容器调用 Servlet 的 init()方法
+服务:如果请求 Servlet,则容器调用 service()方法
+销毁:销毁实例之前调用 destroy()方法
