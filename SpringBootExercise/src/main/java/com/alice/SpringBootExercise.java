@@ -17,8 +17,8 @@ public class SpringBootExercise {
 
     public static void main(String[] args) {
         SpringApplication.run(SpringBootExercise.class,args);
-        GETSTATIC.getComparator();
-        PUTSTATIC.getComparator();
-        INVOKESTATIC.getComparator();
+//        GETSTATIC.getComparator();
+//        PUTSTATIC.getComparator();
+//        INVOKESTATIC.getComparator();
     }
 }

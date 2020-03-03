@@ -438,3 +438,64 @@ Servlet 类的实例对象
 初始化:Servlet 容器调用 Servlet 的 init()方法
 服务:如果请求 Servlet,则容器调用 service()方法
 销毁:销毁实例之前调用 destroy()方法
+
+分布式Session一致性(服务器集群Session共享问题)
+Session的作用? 记录用户信息(应用场景)
+应用场景:JavaEE基础登录流程做法(账号密码登录成功之后,获取到userId 存放在Session 下次获取用户信息之后 直接从session会话中获取) 防止表单重复提交 
+
+Session理解为JVM本地缓存  session存在服务器上 返回SessionId给客户端
+
+Session原理?
+Session常见的问题:
+    浏览器关闭了Session?Session会失效么?
+
+默认创建一个Session 默认值为true 没有找到对应的Session自动创建Session
+HttpSession session = request.getSession();
+session分为sessionid和sessionvalue
+session本身是一个临时的 sessionId和token(令牌)非常相似  保证临时且唯一
+
+(请求和响应过程)
+服务器端接收到客户端请求 会创建一个session 使用响应头返回sessionId给客户端 浏览器获取到sessionId后保存到本地.cookie
+(第二次请求)
+客户端读取到本地的sessionId存放在请求头中 服务器端从请求头中获取到对应的sessionId,通过SessionId在本地session内存中查询
+
+1.分布式Session问题 因为Session存放在服务器端 SessionId对应找不到Session
+2.分布式任务调度平台(服务器集群之后如何保证定时JOB的唯一性)  幂等性
+3.分布式锁解决方案 (全局ID)
+    基于Zookeeper使用临时节点+事件通知
+    基于redis setnx方式缺点: 不推荐 代码复杂 死锁
+    redisson
+    SpringCloud对redisson redis中提供很多关于分布式解决方案 分布式锁
+4.分布式日志收集问题
+    elk 大型的电商互联网内部分布式日志收集
+5.分布式事务问题(跟集群没有关系) rpc远程通讯服务与服务之间实现事务管理.
+    如何纯手写一个自己分布式事务解决框架 模仿lcn
+6.分布式配置中心(跟集群没有关系) 
+面试官经常问你道题:你在做项目的时候,遇到过哪些问题?
+
+
+分布式服务器集群session共享问题
+分布式session解决方案?
+    可以直接使用cookie替代Session(不靠谱)
+    使用Nginx 反向代理 IP hash IP绑定方式 同一个IP 只能在指定的同一个机器访问(没有负载均衡)
+    使用数据库效率不是很高
+    tomcat内置支持对session同步(不推荐) 同步可能会产生延迟
+    使用Spring-Session框架相当于把我们Session缓存到redis中
+    使用token替代Session功能
+
+面试题:项目在发布时候,Session如何控制不失效?
+    使用缓存框架 缓存Session的值(一级 和 二级)
+    Spring-Session重写httpSession框架 将对应的值缓存到redis中 有点类似于一级缓存 二级缓存
+    SessionId不同 它的域名也不同
+    移动会话信息使用令牌token方式替代Session
+    Token最终存放在redis中 redis支持分布式共享
+
+
+
+
+
+
+
+
+
+
