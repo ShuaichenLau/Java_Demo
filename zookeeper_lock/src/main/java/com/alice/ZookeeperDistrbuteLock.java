@@ -1,7 +1,9 @@
 package com.alice;
 
+import cn.hutool.json.JSONObject;
 import org.I0Itec.zkclient.IZkDataListener;
 
+import java.util.UUID;
 import java.util.concurrent.CountDownLatch;
 
 /**
@@ -48,10 +50,18 @@ public class ZookeeperDistrbuteLock extends ZookeeperAbstractLock {
 
         try {
             //创建失败抛异常
-            zkClient.createEphemeral(lockPath);
+            User user = new User();
+            user.setId(UUID.randomUUID().toString());
+            user.setAge(20);
+            user.setName("liusc");
+            user.setAddress("beijing");
+            JSONObject jsonObject = new JSONObject(user);
+
+//            zkClient.createEphemeral(lockPath);
+            zkClient.createEphemeral(lockPath,jsonObject.toString());
             return true;
         } catch (RuntimeException e) {
-            e.printStackTrace();
+            //e.printStackTrace();
         }
         return false;
     }
