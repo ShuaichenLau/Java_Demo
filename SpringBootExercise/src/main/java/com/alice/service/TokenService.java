@@ -12,9 +12,14 @@ public class TokenService {
     private RedisService redisService;
 
     // 新增 返回token
-    public String put(Object object) {
+    public String put(Object obj) {
+
+        if (obj == null) {
+            return null;
+        }
+
         String token = getToken();
-        redisService.setString(token, object);
+        redisService.setString(token, obj);
         return token;
     }
 
