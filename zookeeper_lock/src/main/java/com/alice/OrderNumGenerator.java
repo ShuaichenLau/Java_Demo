@@ -22,7 +22,7 @@ public class OrderNumGenerator {
 
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH-mm-ss");
 
-        return dateFormat.format(new Date()) + "  ---  " + ++count;
+        return dateFormat.format(new Date()) + "  ----  " + ++count;
 
     }
 }
