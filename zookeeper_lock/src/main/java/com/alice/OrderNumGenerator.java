@@ -12,14 +12,6 @@ public class OrderNumGenerator {
 
     public String getNumber(){
 
-//
-//        try {
-//            Thread.sleep(200);
-//        } catch (InterruptedException e) {
-//            e.printStackTrace();
-//        }
-
-
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH-mm-ss");
 
         return dateFormat.format(new Date()) + "  ----  " + ++count;
