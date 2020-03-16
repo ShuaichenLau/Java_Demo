@@ -20,20 +20,22 @@ import java.util.concurrent.CopyOnWriteArrayList;
 public class IndexController {
 
     @RequestMapping("/indexDemo")
-    public String indexController(){
+    public String indexController() {
         log.info("com.alice.controller.IndexController.indexController");
 
         new CopyOnWriteArrayList<String>();
         new ArrayList<String>();
-        new HashMap<String,String>();
+        new HashMap<String, String>();
 
         System.out.println(1 << 4);
 
         Calendar calendar = Calendar.getInstance();
 
         return calendar.getTime().toString();
-//        return new Date().toString();
+    }
 
-
+    @RequestMapping("/time")
+    public String timeController() {
+        return new Date().toString();
     }
 }

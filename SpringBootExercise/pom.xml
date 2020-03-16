@@ -43,6 +43,13 @@
         <!--<artifactId>spring-boot-starter-web</artifactId>-->
         <!--</dependency>-->
 
+
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>springloaded</artifactId>
+            <version>1.2.4.RELEASE</version>
+        </dependency>
+
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
@@ -163,8 +170,27 @@
             <scope>compile</scope>
         </dependency>
 
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-devtools</artifactId>
+            <optional>true</optional>
+            <scope>true</scope>
+        </dependency>
+
 
     </dependencies>
+
+
+    <!--<executions>-->
+        <!--<execution>-->
+            <!--<goals>-->
+                <!--<goal>repackage</goal>-->
+            <!--</goals>-->
+            <!--<configuration>-->
+                <!--<classifier>exec</classifier>-->
+            <!--</configuration>-->
+        <!--</execution>-->
+    <!--</executions>-->
 
     <build>
         <plugins>
@@ -181,11 +207,13 @@
                     <target>1.8</target>
                     <encoding>UTF-8</encoding>
                     <showWarnings>true</showWarnings>
+                    <fork>true</fork>
                 </configuration>
             </plugin>
 
         </plugins>
     </build>
+
 
 
 </project>
