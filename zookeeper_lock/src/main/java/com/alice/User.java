@@ -2,7 +2,10 @@ package com.alice;
 
 import java.io.Serializable;
 
+
 public class User implements Serializable {
+
+    private static final long serialVersionUID = 6699769362379415342L;
 
     private String id;
     private int age;
