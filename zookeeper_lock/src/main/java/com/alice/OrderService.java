@@ -1,5 +1,8 @@
 package com.alice;
 
+/**
+ * 2020-3-16 16:44:50 OrderService
+ */
 public class OrderService implements Runnable {
 
     private OrderNumGenerator orderNumGenerator = new OrderNumGenerator();
