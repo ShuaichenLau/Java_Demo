@@ -572,3 +572,5 @@ xxl-job admin平台 独立web服务器
 2.在XXL-job admin平台新建任务,填写对应的执行器
 3.在job服务器代码中,使用JobHandler标识该类为job执行方法
 4.如果有任务需要执行的时候,现在xxl-job admin执行一次,获取任务中的执行器.
+
+2020年3月16日16:46:58
