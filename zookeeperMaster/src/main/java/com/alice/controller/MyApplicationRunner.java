@@ -45,7 +45,7 @@ public class MyApplicationRunner implements ApplicationRunner {
     private void createEphemeral() {
         try {
             zkClient.createEphemeral(PATH,ServerPort);
-            System.out.println("ServerPort == " + ServerPort + ", 选举成功");
+            System.out.println("ServerPort = = + -  " + ServerPort + ", 选举成功");
             ElectionMaster.isSurvival = true;
         } catch (RuntimeException e) {
             System.out.println("该节点已经存在");
