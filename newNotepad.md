@@ -616,4 +616,10 @@ redis释放锁:redis在释放锁的时候,为了确保是锁的一致性问题,�
 zookeeper使用会话有效期方式解决死锁现象
 redis是对key设置有效期expire来解决死锁现象
 
+性能 redis性能比zookeeper要好  redis是nosql数据库
+可靠性 zookeeper更加可靠  因为redis有效期不是很好控制 可能会产生有效期延迟
+    zookeeper临时节点先天性自带可控的有效期功能,所以相对来说zookeeper可靠性要比redis要好
+
+
+
 
