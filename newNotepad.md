@@ -620,6 +620,43 @@ redis是对key设置有效期expire来解决死锁现象
 可靠性 zookeeper更加可靠  因为redis有效期不是很好控制 可能会产生有效期延迟
     zookeeper临时节点先天性自带可控的有效期功能,所以相对来说zookeeper可靠性要比redis要好
 
+rpc远程调用技术框架:
+    httpclient springCloud dubbo grpc
+    核心底层都是使用socket技术或者Netty实现
+
+SOA架构特点:底层基于SOAP或者ESB(消息总线)实现,底层使用http或者https协议实现
+WebService 是用http协议+xml (SOAP)
+微服务是以json代替xml
+
+
+服务注册:将服务信息注册到注册中心上
+服务发现:从注册中心上获取服务信息
+1.服务注册与实现原理在任何RPC远程框架中,都会有一个注册中心
+2.注册中心概念:存放服务地址相关的信息(接口地址)
+3.会员服务在启动的时候,会把当前服务基本信息比如服务地址和端口以别名方式注册到注册中心上去
+4.消费者在调用接口的时候,使用服务别名也就是Serviced去注册中心上获取实际rpc远程调用地址
+5.如果消费者获取实际rpc远程调用地址之后,再使用本地HttpClient技术实现调用
+(首先会缓存在JVM内存中,默认情况下Eureka每隔30秒更新一次调用服务地址)
+
+SpringCloud中支持以下3种注册中心 Eureka Consul zookeeper Dubbo(X) 
+Dubbo支持常用两种Redis和zookeeper
+
+服务提供者 提供服务接口
+服务消费者 调用其他接口进行使用
+一个服务可以作为提供者 也可以做消费者
+
+微服务负载均衡:本地负载均衡
+
+
+
+
+
+
+
+
+
+
+
 
 
 
