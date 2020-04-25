@@ -647,7 +647,26 @@ Dubbo支持常用两种Redis和zookeeper
 
 微服务负载均衡:本地负载均衡
 
+微服务非常核心的组件:服务治理中心
 
+为什么会产生Eureka自我保护?
+    为了防止EurekaClient与EurekaServer网络不通的情况下,EurekaServer误将EurekaClient剔除
+分为两种角色 EurekaClient(注册客户端) EurekaServer(注册中心服务端)
+
+服务自我保护机制:默认情况EurekaClient定时向EurekaServer发送心跳包(ping),
+如果在EurekaServer在一定时间没有收到EurekaClient服务的心跳包,便从服务注册列表中剔除改服务.(默认90s时间)
+但是在短时间内丢失了大量的服务实例心跳,这时候EurekaClient会开启自我保护机制,不会剔除该服务.(有可能是网络故障原因)
+在自我保护机制中,为什么EurekaServer不会剔除该服务? 为了防止EurekaClient是可以正常访问,但是只是EurekaClient与EurekaServer端访问网络不通
+在什么环境会开启自我保护机制?
+
+本地环境建议禁止自我保护机制
+生产环境建议开启自我保护机制
+
+注册中心目的是为了做什么?(管理服务之间的依赖关系 服务治理 注册与发现 能够实现负载均衡)
+
+关于Eureka闭源 可以使用zk替代Eureka作为注册中心
+zookeeper分布式协调工具 可以实现注册中心 采用zookeeper节点类型?(临时节点)
+临时节点和生命周期相关联(当服务连接被断开或者宕机意味着会话会被关闭 那么临时节点就自动会被删除)
 
 
 
