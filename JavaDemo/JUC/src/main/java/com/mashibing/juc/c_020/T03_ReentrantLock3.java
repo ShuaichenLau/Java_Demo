@@ -1,15 +1,4 @@
-/**
- * reentrantlockÓÃÓÚÌæ´úsynchronized
- * ÓÉÓÚm1Ëø¶¨this,Ö»ÓÐm1Ö´ÐÐÍê±ÏµÄÊ±ºò,m2²ÅÄÜÖ´ÐÐ
- * ÕâÀïÊÇ¸´Ï°synchronized×îÔ­Ê¼µÄÓïÒå
- * 
- * Ê¹ÓÃreentrantlock¿ÉÒÔÍê³ÉÍ¬ÑùµÄ¹¦ÄÜ
- * ÐèÒª×¢ÒâµÄÊÇ£¬±ØÐëÒª±ØÐëÒª±ØÐëÒªÊÖ¶¯ÊÍ·ÅËø£¨ÖØÒªµÄÊÂÇéËµÈý±é£©
- * Ê¹ÓÃsynËø¶¨µÄ»°Èç¹ûÓöµ½Òì³££¬jvm»á×Ô¶¯ÊÍ·ÅËø£¬µ«ÊÇlock±ØÐëÊÖ¶¯ÊÍ·ÅËø£¬Òò´Ë¾­³£ÔÚfinallyÖÐ½øÐÐËøµÄÊÍ·Å
- * 
- * Ê¹ÓÃreentrantlock¿ÉÒÔ½øÐÐ¡°³¢ÊÔËø¶¨¡±tryLock£¬ÕâÑùÎÞ·¨Ëø¶¨£¬»òÕßÔÚÖ¸¶¨Ê±¼äÄÚÎÞ·¨Ëø¶¨£¬Ïß³Ì¿ÉÒÔ¾ö¶¨ÊÇ·ñ¼ÌÐøµÈ´ý
- * @author mashibing
- */
+
 package com.mashibing.juc.c_020;
 
 import java.util.concurrent.TimeUnit;
@@ -35,9 +24,9 @@ public class T03_ReentrantLock3 {
 	}
 
 	/**
-	 * Ê¹ÓÃtryLock½øÐÐ³¢ÊÔËø¶¨£¬²»¹ÜËø¶¨Óë·ñ£¬·½·¨¶¼½«¼ÌÐøÖ´ÐÐ
-	 * ¿ÉÒÔ¸ù¾ÝtryLockµÄ·µ»ØÖµÀ´ÅÐ¶¨ÊÇ·ñËø¶¨
-	 * Ò²¿ÉÒÔÖ¸¶¨tryLockµÄÊ±¼ä£¬ÓÉÓÚtryLock(time)Å×³öÒì³££¬ËùÒÔÒª×¢ÒâunclockµÄ´¦Àí£¬±ØÐë·Åµ½finallyÖÐ
+	 * Ê¹ï¿½ï¿½tryLockï¿½ï¿½ï¿½Ð³ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ñ£¬·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö´ï¿½ï¿½
+	 * ï¿½ï¿½ï¿½Ô¸ï¿½ï¿½ï¿½tryLockï¿½Ä·ï¿½ï¿½ï¿½Öµï¿½ï¿½ï¿½Ð¶ï¿½ï¿½Ç·ï¿½ï¿½ï¿½ï¿½ï¿½
+	 * Ò²ï¿½ï¿½ï¿½ï¿½Ö¸ï¿½ï¿½tryLockï¿½ï¿½Ê±ï¿½ä£¬ï¿½ï¿½ï¿½ï¿½tryLock(time)ï¿½×³ï¿½ï¿½ì³£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Òª×¢ï¿½ï¿½unclockï¿½Ä´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Åµï¿½finallyï¿½ï¿½
 	 */
 	void m2() {
 		/*

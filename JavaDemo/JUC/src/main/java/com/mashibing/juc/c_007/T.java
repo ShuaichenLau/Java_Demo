@@ -1,7 +1,4 @@
-/**
- * 同步和非同步方法是否可以同时调用？
- * @author mashibing
- */
+
 
 package com.mashibing.juc.c_007;
 
@@ -36,7 +33,7 @@ public class T {
 		new Thread(t::m2, "t2").start();
 		
 		/*
-		//1.8之前的写法
+		//1.8之前锟斤拷写锟斤拷
 		new Thread(new Runnable() {
 
 			@Override

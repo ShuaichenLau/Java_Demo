@@ -1,13 +1,4 @@
-/**
- * ThreadLocal线程局部变量
- *
- * ThreadLocal是使用空间换时间，synchronized是使用时间换空间
- * 比如在hibernate中session就存在与ThreadLocal中，避免synchronized的使用
- *
- * 运行下面的程序，理解ThreadLocal
- * 
- * @author 马士兵
- */
+
 package com.mashibing.juc.c_022_RefTypeAndThreadLocal;
 
 import java.util.concurrent.TimeUnit;

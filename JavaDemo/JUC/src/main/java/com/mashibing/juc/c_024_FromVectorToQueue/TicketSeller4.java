@@ -1,21 +1,4 @@
-/**
- * ÓĞNÕÅ»ğ³µÆ±£¬Ã¿ÕÅÆ±¶¼ÓĞÒ»¸ö±àºÅ
- * Í¬Ê±ÓĞ10¸ö´°¿Ú¶ÔÍâÊÛÆ±
- * ÇëĞ´Ò»¸öÄ£Äâ³ÌĞò
- * 
- * ·ÖÎöÏÂÃæµÄ³ÌĞò¿ÉÄÜ»á²úÉúÄÄĞ©ÎÊÌâ£¿
- * ÖØ¸´ÏúÊÛ£¿³¬Á¿ÏúÊÛ£¿
- * 
- * Ê¹ÓÃVector»òÕßCollections.synchronizedXXX
- * ·ÖÎöÒ»ÏÂ£¬ÕâÑùÄÜ½â¾öÎÊÌâÂğ£¿
- * 
- * ¾ÍËã²Ù×÷AºÍB¶¼ÊÇÍ¬²½µÄ£¬µ«AºÍB×é³ÉµÄ¸´ºÏ²Ù×÷Ò²Î´±ØÊÇÍ¬²½µÄ£¬ÈÔÈ»ĞèÒª×Ô¼º½øĞĞÍ¬²½
- * ¾ÍÏñÕâ¸ö³ÌĞò£¬ÅĞ¶ÏsizeºÍ½øĞĞremove±ØĞëÊÇÒ»Õû¸öµÄÔ­×Ó²Ù×÷
- * 
- * Ê¹ÓÃConcurrentQueueÌá¸ß²¢·¢ĞÔ
- * 
- * @author ÂíÊ¿±ø
- */
+
 package com.mashibing.juc.c_024_FromVectorToQueue;
 
 import java.util.Queue;
@@ -26,7 +9,7 @@ public class TicketSeller4 {
 	
 	
 	static {
-		for(int i=0; i<1000; i++) tickets.add("Æ± ±àºÅ£º" + i);
+		for(int i=0; i<1000; i++) tickets.add("  " + i);
 	}
 	
 	public static void main(String[] args) {
@@ -36,7 +19,7 @@ public class TicketSeller4 {
 				while(true) {
 					String s = tickets.poll();
 					if(s == null) break;
-					else System.out.println("ÏúÊÛÁË--" + s);
+					else System.out.println("é”€å”®--" + s);
 				}
 			}).start();
 		}

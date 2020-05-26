@@ -1,6 +1,3 @@
-/**
- * Ïß³Ì³ØµÄ¸ÅÄî
- */
 package com.mashibing.juc.c_026_01_ThreadPool;
 
 import java.util.concurrent.ExecutorService;

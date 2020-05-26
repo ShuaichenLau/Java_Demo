@@ -1,33 +1,16 @@
-/**
- * reentrantlockÓÃÓÚÌæ´úsynchronized
- * ÓÉÓÚm1Ëø¶¨this,Ö»ÓĞm1Ö´ĞĞÍê±ÏµÄÊ±ºò,m2²ÅÄÜÖ´ĞĞ
- * ÕâÀïÊÇ¸´Ï°synchronized×îÔ­Ê¼µÄÓïÒå
- * 
- * Ê¹ÓÃreentrantlock¿ÉÒÔÍê³ÉÍ¬ÑùµÄ¹¦ÄÜ
- * ĞèÒª×¢ÒâµÄÊÇ£¬±ØĞëÒª±ØĞëÒª±ØĞëÒªÊÖ¶¯ÊÍ·ÅËø£¨ÖØÒªµÄÊÂÇéËµÈı±é£©
- * Ê¹ÓÃsynËø¶¨µÄ»°Èç¹ûÓöµ½Òì³££¬jvm»á×Ô¶¯ÊÍ·ÅËø£¬µ«ÊÇlock±ØĞëÊÖ¶¯ÊÍ·ÅËø£¬Òò´Ë¾­³£ÔÚfinallyÖĞ½øĞĞËøµÄÊÍ·Å
- * 
- * Ê¹ÓÃreentrantlock¿ÉÒÔ½øĞĞ¡°³¢ÊÔËø¶¨¡±tryLock£¬ÕâÑùÎŞ·¨Ëø¶¨£¬»òÕßÔÚÖ¸¶¨Ê±¼äÄÚÎŞ·¨Ëø¶¨£¬Ïß³Ì¿ÉÒÔ¾ö¶¨ÊÇ·ñ¼ÌĞøµÈ´ı
- * 
- * Ê¹ÓÃReentrantLock»¹¿ÉÒÔµ÷ÓÃlockInterruptibly·½·¨£¬¿ÉÒÔ¶ÔÏß³Ìinterrupt·½·¨×ö³öÏìÓ¦£¬
- * ÔÚÒ»¸öÏß³ÌµÈ´ıËøµÄ¹ı³ÌÖĞ£¬¿ÉÒÔ±»´ò¶Ï
- * 
- * ReentrantLock»¹¿ÉÒÔÖ¸¶¨Îª¹«Æ½Ëø
- * 
- * @author mashibing
- */
+
 package com.mashibing.juc.c_020;
 
 import java.util.concurrent.locks.ReentrantLock;
 
 public class T05_ReentrantLock5 extends Thread {
 		
-	private static ReentrantLock lock=new ReentrantLock(true); //²ÎÊıÎªtrue±íÊ¾Îª¹«Æ½Ëø£¬Çë¶Ô±ÈÊä³ö½á¹û
+	private static ReentrantLock lock=new ReentrantLock(true); //ï¿½ï¿½ï¿½ï¿½Îªtrueï¿½ï¿½Ê¾Îªï¿½ï¿½Æ½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ô±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
     public void run() {
         for(int i=0; i<100; i++) {
             lock.lock();
             try{
-                System.out.println(Thread.currentThread().getName()+"»ñµÃËø");
+                System.out.println(Thread.currentThread().getName()+"ï¿½ï¿½ï¿½ï¿½ï¿½");
             }finally{
                 lock.unlock();
             }

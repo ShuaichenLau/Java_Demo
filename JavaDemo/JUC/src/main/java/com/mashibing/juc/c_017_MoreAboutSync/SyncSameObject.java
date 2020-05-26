@@ -1,9 +1,4 @@
-/**
- * 锁定某对象o，如果o的属性发生改变，不影响锁的使用
- * 但是如果o变成另外一个对象，则锁定的对象发生改变
- * 应该避免将锁定对象的引用变成另外的对象
- * @author mashibing
- */
+
 package com.mashibing.juc.c_017_MoreAboutSync;
 
 import java.util.concurrent.TimeUnit;
@@ -30,7 +25,7 @@ public class SyncSameObject {
 	
 	public static void main(String[] args) {
 		SyncSameObject t = new SyncSameObject();
-		//启动第一个线程
+		//锟斤拷锟斤拷锟斤拷一锟斤拷锟竭筹拷
 		new Thread(t::m, "t1").start();
 		
 		try {
@@ -38,10 +33,10 @@ public class SyncSameObject {
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
-		//创建第二个线程
+		//锟斤拷锟斤拷锟节讹拷锟斤拷锟竭筹拷
 		Thread t2 = new Thread(t::m, "t2");
 		
-		t.o = new Object(); //锁对象发生改变，所以t2线程得以执行，如果注释掉这句话，线程2将永远得不到执行机会
+		t.o = new Object(); //锟斤拷锟斤拷锟斤拷锟斤拷锟侥变，锟斤拷锟斤拷t2锟竭程碉拷锟斤拷执锟叫ｏ拷锟斤拷锟阶拷偷锟斤拷锟戒话锟斤拷锟竭筹拷2锟斤拷锟斤拷远锟矫诧拷锟斤拷执锟叫伙拷锟斤拷
 		
 		t2.start();
 		

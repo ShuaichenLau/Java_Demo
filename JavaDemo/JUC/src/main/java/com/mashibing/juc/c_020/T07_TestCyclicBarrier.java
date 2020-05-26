@@ -7,12 +7,12 @@ public class T07_TestCyclicBarrier {
     public static void main(String[] args) {
         //CyclicBarrier barrier = new CyclicBarrier(20);
 
-        CyclicBarrier barrier = new CyclicBarrier(20, () -> System.out.println("满人"));
+        CyclicBarrier barrier = new CyclicBarrier(20, () -> System.out.println("ll"));
 
         /*CyclicBarrier barrier = new CyclicBarrier(20, new Runnable() {
             @Override
             public void run() {
-                System.out.println("满人，发车");
+                System.out.println("l");
             }
         });*/
 
