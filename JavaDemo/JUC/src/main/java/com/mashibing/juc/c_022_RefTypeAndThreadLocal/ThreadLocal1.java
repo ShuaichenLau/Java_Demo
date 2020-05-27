@@ -1,8 +1,4 @@
-/**
- * ThreadLocal线程局部变量
- * 
- * @author 马士兵
- */
+
 package com.mashibing.juc.c_022_RefTypeAndThreadLocal;
 
 import java.util.concurrent.TimeUnit;

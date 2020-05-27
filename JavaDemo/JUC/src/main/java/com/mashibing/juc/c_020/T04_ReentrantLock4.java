@@ -1,19 +1,4 @@
-/**
- * reentrantlockÓÃÓÚÌæ´úsynchronized
- * ÓÉÓÚm1Ëø¶¨this,Ö»ÓÐm1Ö´ÐÐÍê±ÏµÄÊ±ºò,m2²ÅÄÜÖ´ÐÐ
- * ÕâÀïÊÇ¸´Ï°synchronized×îÔ­Ê¼µÄÓïÒå
- * 
- * Ê¹ÓÃreentrantlock¿ÉÒÔÍê³ÉÍ¬ÑùµÄ¹¦ÄÜ
- * ÐèÒª×¢ÒâµÄÊÇ£¬±ØÐëÒª±ØÐëÒª±ØÐëÒªÊÖ¶¯ÊÍ·ÅËø£¨ÖØÒªµÄÊÂÇéËµÈý±é£©
- * Ê¹ÓÃsynËø¶¨µÄ»°Èç¹ûÓöµ½Òì³££¬jvm»á×Ô¶¯ÊÍ·ÅËø£¬µ«ÊÇlock±ØÐëÊÖ¶¯ÊÍ·ÅËø£¬Òò´Ë¾­³£ÔÚfinallyÖÐ½øÐÐËøµÄÊÍ·Å
- * 
- * Ê¹ÓÃreentrantlock¿ÉÒÔ½øÐÐ¡°³¢ÊÔËø¶¨¡±tryLock£¬ÕâÑùÎÞ·¨Ëø¶¨£¬»òÕßÔÚÖ¸¶¨Ê±¼äÄÚÎÞ·¨Ëø¶¨£¬Ïß³Ì¿ÉÒÔ¾ö¶¨ÊÇ·ñ¼ÌÐøµÈ´ý
- * 
- * Ê¹ÓÃReentrantLock»¹¿ÉÒÔµ÷ÓÃlockInterruptibly·½·¨£¬¿ÉÒÔ¶ÔÏß³Ìinterrupt·½·¨×ö³öÏìÓ¦£¬
- * ÔÚÒ»¸öÏß³ÌµÈ´ýËøµÄ¹ý³ÌÖÐ£¬¿ÉÒÔ±»´ò¶Ï
- * 
- * @author mashibing
- */
+
 package com.mashibing.juc.c_020;
 
 import java.util.concurrent.TimeUnit;
@@ -44,7 +29,7 @@ public class T04_ReentrantLock4 {
 		Thread t2 = new Thread(()->{
 			try {
 				//lock.lock();
-				lock.lockInterruptibly(); //¿ÉÒÔ¶Ôinterrupt()·½·¨×ö³öÏìÓ¦
+				lock.lockInterruptibly(); //ï¿½ï¿½ï¿½Ô¶ï¿½interrupt()ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ó¦
 				System.out.println("t2 start");
 				TimeUnit.SECONDS.sleep(5);
 				System.out.println("t2 end");
@@ -61,7 +46,7 @@ public class T04_ReentrantLock4 {
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
-		t2.interrupt(); //´ò¶ÏÏß³Ì2µÄµÈ´ý
+		t2.interrupt(); //ï¿½ï¿½ï¿½ï¿½ß³ï¿½2ï¿½ÄµÈ´ï¿½
 		
 	}
 }

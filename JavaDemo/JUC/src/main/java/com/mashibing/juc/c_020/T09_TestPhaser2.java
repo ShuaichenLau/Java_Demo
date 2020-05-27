@@ -26,8 +26,8 @@ public class T09_TestPhaser2 {
             new Thread(new Person("p" + i)).start();
         }
 
-        new Thread(new Person("新郎")).start();
-        new Thread(new Person("新娘")).start();
+        new Thread(new Person("ll")).start();
+        new Thread(new Person("ll")).start();
 
     }
 
@@ -39,19 +39,19 @@ public class T09_TestPhaser2 {
 
             switch (phase) {
                 case 0:
-                    System.out.println("所有人到齐了！" + registeredParties);
+                    System.out.println("ll" + registeredParties);
                     System.out.println();
                     return false;
                 case 1:
-                    System.out.println("所有人吃完了！" + registeredParties);
+                    System.out.println("ll" + registeredParties);
                     System.out.println();
                     return false;
                 case 2:
-                    System.out.println("所有人离开了！" + registeredParties);
+                    System.out.println("ll" + registeredParties);
                     System.out.println();
                     return false;
                 case 3:
-                    System.out.println("婚礼结束！新郎新娘抱抱！" + registeredParties);
+                    System.out.println("llll" + registeredParties);
                     return true;
                 default:
                     return true;
@@ -70,28 +70,28 @@ public class T09_TestPhaser2 {
         public void arrive() {
 
             milliSleep(r.nextInt(1000));
-            System.out.printf("%s 到达现场！\n", name);
+            System.out.printf("%s ll\n", name);
             phaser.arriveAndAwaitAdvance();
         }
 
         public void eat() {
             milliSleep(r.nextInt(1000));
-            System.out.printf("%s 吃完!\n", name);
+            System.out.printf("%s ll!\n", name);
             phaser.arriveAndAwaitAdvance();
         }
 
         public void leave() {
             milliSleep(r.nextInt(1000));
-            System.out.printf("%s 离开！\n", name);
+            System.out.printf("%s ll\n", name);
 
 
             phaser.arriveAndAwaitAdvance();
         }
 
         private void hug() {
-            if(name.equals("新郎") || name.equals("新娘")) {
+            if(name.equals("锟斤拷锟斤拷") || name.equals("锟斤拷锟斤拷")) {
                 milliSleep(r.nextInt(1000));
-                System.out.printf("%s 洞房！\n", name);
+                System.out.printf("%s 锟斤拷锟斤拷锟斤拷\n", name);
                 phaser.arriveAndAwaitAdvance();
             } else {
                 phaser.arriveAndDeregister();

@@ -1,16 +1,10 @@
-/**
- * synchronized关键字
- * 对某个对象加锁
- * @author mashibing
- */
-
 package com.mashibing.juc.c_003;
 
 public class T {
 
 	private int count = 10;
 	
-	public synchronized void m() { //等同于在方法的代码执行时要synchronized(this)
+	public synchronized void m() { //锟斤拷同锟斤拷锟节凤拷锟斤拷锟侥达拷锟斤拷执锟斤拷时要synchronized(this)
 		count--;
 		System.out.println(Thread.currentThread().getName() + " count = " + count);
 	}

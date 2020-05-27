@@ -1,7 +1,3 @@
-/**
- * 分析一下这个程序的输出
- * @author mashibing
- */
 
 package com.mashibing.juc.c_005;
 
