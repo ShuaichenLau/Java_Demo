@@ -918,8 +918,16 @@ kafka存储策略
 3）每个part在内存中对应一个index，记录每个segment中的第一条消息偏移。
 4）发布者发到某个topic的消息会被均匀的分布到多个partition上（或根据用户指定的路由规则进行分布），broker收到发布消息往对应partition的最后一个segment上添加该消息，当某个segment上的消息条数达到配置值或消息发布时间超过阈值时，segment上的消息会被flush到磁盘，只有flush到磁盘上的消息订阅者才能订阅到，segment达到一定的大小后将不会再往该segment写数据，broker会创建新的segment。
 
+SpringCloud消息总线
+在微服务架构中，通常会使用轻量级的消息代理来构建一个共用的消息主题来连接各个微服务实例，它广播的消息会被所有在注册中心的微服务实例监听和消费，也称消息总线。 
+SpringCloud中也有对应的解决方案，SpringCloud Bus 将分布式的节点用轻量的消息代理连接起来，可以很容易搭建消息总线，配合SpringCloud config 实现微服务应用配置信息的动态更新。
+消息代理属于中间件。设计代理的目的就是为了能够从应用程序中传入消息，并执行一些特别的操作。开源产品很多如ActiveMQ、Kafka、RabbitMQ、RocketMQ等 
 
+什么是消息驱动
+SpringCloud Stream消息驱动可以简化开发人员对消息中间件的使用复杂度，让系统开发人员更多尽力专注与核心业务逻辑的开发。SpringCloud Stream基于SpringBoot实现，自动配置化的功能可以帮助我们快速上手学习，类似与我们之前学习的orm框架，可以平滑的切换多种不同的数据库。
+目前SpringCloud Stream 目前只支持 rabbitMQ和kafka
 
+消息总线其实通过消息中间主题模式，他使用广播消息的机制被所有在注册中心微服务实例进行监听和消费。以广播形式将消息推送给所有注册中心服务列表
 
 
 
