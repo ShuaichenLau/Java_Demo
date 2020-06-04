@@ -16,8 +16,7 @@ import sun.misc.Contended;
 public class SessionConfig {
 
     @Contended
-    volatile long x;
-
+    private volatile long x;
 
     // 冒号后的值为没有配置文件时，制动装载的默认值
     @Value("${redis.hostname:localhost}")
