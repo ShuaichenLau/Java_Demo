@@ -10,6 +10,7 @@
     <version>1.0-SNAPSHOT</version>
     <modules>
         <module>order-uuid</module>
+        <module>order-uuid-2018</module>
     </modules>
 
 
