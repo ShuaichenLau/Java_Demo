@@ -11,6 +11,7 @@
     <modules>
         <module>order-uuid</module>
         <module>order-uuid-2018</module>
+        <module>order-uuid-2019</module>
     </modules>
 
 
